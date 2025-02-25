@@ -7,16 +7,15 @@ from flask_cors import CORS
 import cv2
 import numpy as np
 import requests
-from dotenv import load_dotenv  # Cargar variables desde .env
+from dotenv import load_dotenv
 import os
 from ultralytics import YOLO
-import eventlet
 
 # Inicializar Flask
 app = Flask(__name__)
 
 # Configurar CORS para permitir solicitudes desde el frontend en producción
-CORS(app, origins=["https://innervisionai.netlify.app/"])  # Permite solicitudes de solo este origen en específico (Frontend del Chatbot)
+CORS(app, origins=["https://innervisionai.netlify.app/"])  
 
 # Configurar WebSockets
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
@@ -67,14 +66,18 @@ def handle_frame(data):
     except Exception as e:
         print("Error procesando el frame:", str(e))
 
+@app.route("/")
+def home():
+    return "API de InnerVisionAI funcionando 🚀"
+
 @app.route("/chat", methods=["POST"])
 def chat():
     """
     Maneja las solicitudes del chatbot, enviando el mensaje del usuario a la API de OpenAI y devolviendo la respuesta.
     """
     try:
-        data = request.json  # Obtener datos de la solicitud HTTP
-        message = data.get("message")  # Extraer el mensaje enviado por el usuario
+        data = request.json
+        message = data.get("message")
 
         headers = {
             "Authorization": f"Bearer {OPENAI_API_KEY}",
@@ -85,10 +88,8 @@ def chat():
             "messages": [{"role": "user", "content": message}]
         }
 
-        # Enviar solicitud a OpenAI
         response = requests.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
 
-        # Verificar si la solicitud fue exitosa
         if response.status_code == 200:
             return jsonify({"response": response.json()["choices"][0]["message"]["content"]})
         else:
@@ -102,4 +103,4 @@ if __name__ == '__main__':
     Inicia el servidor Flask con WebSockets en un puerto dinámico (Render lo asigna automáticamente).
     """
     port = int(os.getenv("PORT", 5000))  # Usar el puerto asignado por Render o 5000 por defecto
-    socketio.run(app, host='0.0.0.0', port=port, allow_unsafe_werkzeug=True)
+    socketio.run(app, host='0.0.0.0', port=port)

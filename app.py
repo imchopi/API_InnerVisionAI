@@ -123,5 +123,5 @@ def chat():
         return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Usa el puerto de Render o 5000 por defecto
+    port = int(os.environ.get('PORT', 4000))  # Usa el puerto de Render o 5000 por defecto
     socketio.run(app, host='0.0.0.0', port=port, debug=True)

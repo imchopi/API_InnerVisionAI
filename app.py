@@ -4,21 +4,27 @@ from flask_cors import CORS
 import cv2
 import numpy as np
 import requests
-from dotenv import load_dotenv  # Importa la función para cargar .env
+from dotenv import load_dotenv  # Cargar variables desde .env
 import os
 from ultralytics import YOLO
+import eventlet
 
+# Inicializar Flask
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:8100"])  # Permite solicitudes de solo este origen en específico (Frontend del Chatbot)
-socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Cargar variables desde .env
+# Configurar CORS para permitir solicitudes desde el frontend en producción
+CORS(app, origins=["https://innervisionai.netlify.app/"])  # Permite solicitudes de solo este origen en específico (Frontend del Chatbot)
+
+# Configurar WebSockets
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+
+# Cargar variables de entorno
 load_dotenv()
 
-# Cargar modelo YOLO para detección de objetos
+# Cargar modelo YOLO
 model = YOLO("yolov8n.pt")
 
-# Claves de API de OpenAI obtenidas de las variables de entorno
+# Claves de API de OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
@@ -26,9 +32,6 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 def handle_frame(data):
     """
     Procesa un frame recibido desde el frontend, aplica detección de objetos con YOLO y envía las detecciones de vuelta.
-
-    Args:
-        data (dict): Diccionario que contiene la imagen en formato base64.
     """
     try:
         # Decodificar imagen desde base64
@@ -58,18 +61,13 @@ def handle_frame(data):
 
         # Enviar detecciones al frontend
         socketio.emit('detections', detections)
-
     except Exception as e:
         print("Error procesando el frame:", str(e))
-
 
 @app.route("/chat", methods=["POST"])
 def chat():
     """
     Maneja las solicitudes del chatbot, enviando el mensaje del usuario a la API de OpenAI y devolviendo la respuesta.
-
-    Returns:
-        JSON: Respuesta generada por el modelo de OpenAI.
     """
     try:
         data = request.json  # Obtener datos de la solicitud HTTP
@@ -84,7 +82,7 @@ def chat():
             "messages": [{"role": "user", "content": message}]
         }
 
-        # Enviar solicitud a OpenAI para obtener la respuesta del chatbot
+        # Enviar solicitud a OpenAI
         response = requests.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
 
         # Verificar si la solicitud fue exitosa
@@ -92,13 +90,14 @@ def chat():
             return jsonify({"response": response.json()["choices"][0]["message"]["content"]})
         else:
             return jsonify({"error": "Error al obtener respuesta del chatbot"}), 500
-
     except Exception as e:
         print("Error al conectar con OpenAI:", str(e))
         return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
     """
-    Inicia el servidor Flask con WebSockets en el puerto 5000.
+    Inicia el servidor Flask con WebSockets en un puerto dinámico (Render lo asigna automáticamente).
     """
-    socketio.run(app, host='0.0.0.0', port=5000,  allow_unsafe_werkzeug=True)
+    eventlet.monkey_patch()  # Habilitar Eventlet para compatibilidad con WebSockets
+    port = int(os.getenv("PORT", 5000))  # Usar el puerto asignado por Render o 5000 por defecto
+    socketio.run(app, host='0.0.0.0', port=port, allow_unsafe_werkzeug=True)

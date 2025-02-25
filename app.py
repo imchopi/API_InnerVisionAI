@@ -1,8 +1,6 @@
-# Asegúrate de que eventlet.monkey_patch() sea lo primero
 import eventlet
 eventlet.monkey_patch()
 
-# Luego importa los demás módulos
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
@@ -16,8 +14,15 @@ from ultralytics import YOLO
 # Inicializar Flask
 app = Flask(__name__)
 
-# Configurar CORS para permitir solicitudes desde el frontend en producción
+# Configurar CORS (Evita bloqueos con Netlify)
 CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "https://innervisionai.netlify.app"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    return response
 
 # Configurar WebSockets
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
@@ -34,11 +39,8 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 @socketio.on('frame')
 def handle_frame(data):
-    """
-    Procesa un frame recibido desde el frontend, aplica detección de objetos con YOLO y envía las detecciones de vuelta.
-    """
+    """Procesa un frame y detecta objetos con YOLO."""
     try:
-        # Decodificar imagen desde base64
         image_bytes = np.frombuffer(data['image'], dtype=np.uint8)
         image = cv2.imdecode(image_bytes, cv2.IMREAD_COLOR)
 
@@ -46,7 +48,6 @@ def handle_frame(data):
             print("Error al decodificar la imagen")
             return
 
-        # Detectar objetos con YOLO
         results = model(image)
 
         detections = []
@@ -63,7 +64,6 @@ def handle_frame(data):
                     "bbox": [xmin, ymin, xmax, ymax]
                 })
 
-        # Enviar detecciones al frontend
         socketio.emit('detections', detections)
     except Exception as e:
         print("Error procesando el frame:", str(e))
@@ -72,11 +72,12 @@ def handle_frame(data):
 def home():
     return "API de InnerVisionAI funcionando 🚀"
 
-@app.route("/chat", methods=["POST"])
+@app.route("/chat", methods=["POST", "OPTIONS"])
 def chat():
-    """
-    Maneja las solicitudes del chatbot, enviando el mensaje del usuario a la API de OpenAI y devolviendo la respuesta.
-    """
+    """Maneja las solicitudes del chatbot y conecta con OpenAI."""
+    if request.method == "OPTIONS":
+        return jsonify({"message": "CORS preflight OK"}), 200
+
     try:
         data = request.json
         message = data.get("message")
@@ -101,8 +102,6 @@ def chat():
         return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    """
-    Inicia el servidor Flask con WebSockets en un puerto dinámico (Render lo asigna automáticamente).
-    """
-    port = int(os.getenv("PORT", 5000))  # Usar el puerto asignado por Render o 5000 por defecto
+    """Inicia el servidor Flask con WebSockets en Render."""
+    port = int(os.getenv("PORT", 5000))  
     socketio.run(app, host='0.0.0.0', port=port)

@@ -1,13 +1,12 @@
 Flask
-ultralytics  # YOLOv8
-torch       # PyTorch (requerido por YOLOv8)
-torchvision # Para manejo de imágenes en PyTorch
-opencv-python  # Para procesamiento de imágenes
-Pillow      # Para manejo de imágenes
-numpy       # Para cálculos numéricos
-requests   # Para hacer solicitudes HTTP (opcional)
+ultralytics
+torch
+torchvision
+opencv-python
+Pillow
+numpy
+requests
 python-dotenv
 flask_socketio
 flask_cors
-gunicorn
 eventlet

@@ -105,7 +105,5 @@ def chat():
         return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    """
-    Inicia el servidor Flask con WebSockets en el puerto 5000.
-    """
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Usa el puerto de Render o 5000 por defecto
+    socketio.run(app, host='0.0.0.0', port=port, debug=True)

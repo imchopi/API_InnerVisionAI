@@ -1,50 +1,37 @@
-import eventlet
-eventlet.monkey_patch()
-
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
 import cv2
 import numpy as np
 import requests
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # Importa la función para cargar .env
 import os
 from ultralytics import YOLO
 
-# Inicializar Flask
 app = Flask(__name__)
+CORS(app, origins=["https://innervisionai.netlify.app"])  # Permite solicitudes de solo este origen en específico (Frontend del Chatbot)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Configurar CORS (Permite conexiones desde el frontend)
-CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})
-
-# Configurar WebSockets
-socketio = SocketIO(app, cors_allowed_origins="https://innervisionai.netlify.app", async_mode='eventlet')
-
-# Cargar variables de entorno
+# Cargar variables desde .env
 load_dotenv()
 
-# Claves de API de OpenAI
+# Cargar modelo YOLO para detección de objetos
+model = YOLO("yolov8n.pt")
+
+# Claves de API de OpenAI obtenidas de las variables de entorno
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-# Cargar modelo YOLO solo cuando sea necesario
-def load_yolo_model():
-    return YOLO("yolov8n.pt")
-
-# Manejar conexiones WebSocket
-@socketio.on('connect')
-def handle_connect():
-    print("Cliente conectado:", request.sid)
-
-@socketio.on('disconnect')
-def handle_disconnect():
-    print("Cliente desconectado:", request.sid)
-
 @socketio.on('frame')
 def handle_frame(data):
-    """Procesa un frame y detecta objetos con YOLO."""
+    """
+    Procesa un frame recibido desde el frontend, aplica detección de objetos con YOLO y envía las detecciones de vuelta.
+
+    Args:
+        data (dict): Diccionario que contiene la imagen en formato base64.
+    """
     try:
-        model = load_yolo_model()  # Cargar el modelo solo cuando se necesite
+        # Decodificar imagen desde base64
         image_bytes = np.frombuffer(data['image'], dtype=np.uint8)
         image = cv2.imdecode(image_bytes, cv2.IMREAD_COLOR)
 
@@ -52,6 +39,7 @@ def handle_frame(data):
             print("Error al decodificar la imagen")
             return
 
+        # Detectar objetos con YOLO
         results = model(image)
 
         detections = []
@@ -68,23 +56,24 @@ def handle_frame(data):
                     "bbox": [xmin, ymin, xmax, ymax]
                 })
 
+        # Enviar detecciones al frontend
         socketio.emit('detections', detections)
+
     except Exception as e:
         print("Error procesando el frame:", str(e))
 
-@app.route("/")
-def home():
-    return "API de InnerVisionAI funcionando �"
 
-@app.route("/chat", methods=["POST", "OPTIONS"])
+@app.route("/chat", methods=["POST"])
 def chat():
-    """Maneja las solicitudes del chatbot y conecta con OpenAI."""
-    if request.method == "OPTIONS":
-        return jsonify({"message": "CORS preflight OK"}), 200
+    """
+    Maneja las solicitudes del chatbot, enviando el mensaje del usuario a la API de OpenAI y devolviendo la respuesta.
 
+    Returns:
+        JSON: Respuesta generada por el modelo de OpenAI.
+    """
     try:
-        data = request.json
-        message = data.get("message")
+        data = request.json  # Obtener datos de la solicitud HTTP
+        message = data.get("message")  # Extraer el mensaje enviado por el usuario
 
         headers = {
             "Authorization": f"Bearer {OPENAI_API_KEY}",
@@ -95,18 +84,21 @@ def chat():
             "messages": [{"role": "user", "content": message}]
         }
 
+        # Enviar solicitud a OpenAI para obtener la respuesta del chatbot
         response = requests.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
 
+        # Verificar si la solicitud fue exitosa
         if response.status_code == 200:
             return jsonify({"response": response.json()["choices"][0]["message"]["content"]})
         else:
             return jsonify({"error": "Error al obtener respuesta del chatbot"}), 500
+
     except Exception as e:
         print("Error al conectar con OpenAI:", str(e))
         return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
-    """Inicia el servidor Flask con WebSockets en Render."""
-    port = int(os.getenv("PORT", 5000))  
-    print(f"Iniciando servidor en el puerto {port}")
-    socketio.run(app, host='0.0.0.0', port=port, debug=True)
+    """
+    Inicia el servidor Flask con WebSockets en el puerto 5000.
+    """
+    socketio.run(app, host='0.0.0.0', port=5000)

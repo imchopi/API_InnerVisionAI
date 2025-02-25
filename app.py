@@ -9,7 +9,7 @@ import os
 from ultralytics import YOLO
 
 app = Flask(__name__)
-CORS(app, origins=["https://innervisionai.netlify.app"])  # Permite solicitudes de solo este origen en específico (Frontend del Chatbot)
+CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})  
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Cargar variables desde .env
@@ -21,6 +21,13 @@ model = YOLO("yolov8n.pt")
 # Claves de API de OpenAI obtenidas de las variables de entorno
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+@app.after_request
+def after_request(response):
+    response.headers["Access-Control-Allow-Origin"] = "https://innervisionai.netlify.app"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
 
 @socketio.on('frame')
 def handle_frame(data):
@@ -101,4 +108,4 @@ if __name__ == '__main__':
     """
     Inicia el servidor Flask con WebSockets en el puerto 5000.
     """
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)

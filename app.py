@@ -16,7 +16,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 load_dotenv()
 
 # Cargar modelo YOLO más ligero (YOLOv5n)
-model = YOLO("yolov5n.pt")
+model = YOLO("yolov5nu.pt")
 
 # Claves de API de OpenAI obtenidas de las variables de entorno
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")

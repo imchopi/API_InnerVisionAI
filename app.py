@@ -14,18 +14,11 @@ from ultralytics import YOLO
 # Inicializar Flask
 app = Flask(__name__)
 
-# Configurar CORS (Evita bloqueos con Netlify)
+# Configurar CORS (Permite conexiones desde el frontend)
 CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers["Access-Control-Allow-Origin"] = "https://innervisionai.netlify.app"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    return response
-
 # Configurar WebSockets
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+socketio = SocketIO(app, cors_allowed_origins="https://innervisionai.netlify.app", async_mode='eventlet')
 
 # Cargar variables de entorno
 load_dotenv()
@@ -36,6 +29,15 @@ model = YOLO("yolov8n.pt")
 # Claves de API de OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+# Manejar conexiones WebSocket
+@socketio.on('connect')
+def handle_connect():
+    print("Cliente conectado:", request.sid)
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Cliente desconectado:", request.sid)
 
 @socketio.on('frame')
 def handle_frame(data):
@@ -104,4 +106,5 @@ def chat():
 if __name__ == '__main__':
     """Inicia el servidor Flask con WebSockets en Render."""
     port = int(os.getenv("PORT", 5000))  
-    socketio.run(app, host='0.0.0.0', port=port)
+    print(f"Iniciando servidor en el puerto {port}")
+    socketio.run(app, host='0.0.0.0', port=port, debug=True)

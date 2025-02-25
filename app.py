@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
@@ -98,6 +101,5 @@ if __name__ == '__main__':
     """
     Inicia el servidor Flask con WebSockets en un puerto dinámico (Render lo asigna automáticamente).
     """
-    eventlet.monkey_patch()  # Habilitar Eventlet para compatibilidad con WebSockets
     port = int(os.getenv("PORT", 5000))  # Usar el puerto asignado por Render o 5000 por defecto
     socketio.run(app, host='0.0.0.0', port=port, allow_unsafe_werkzeug=True)

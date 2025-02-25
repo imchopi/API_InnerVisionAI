@@ -1,6 +1,8 @@
+# Asegúrate de que eventlet.monkey_patch() sea lo primero
 import eventlet
 eventlet.monkey_patch()
 
+# Luego importa los demás módulos
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
@@ -15,7 +17,7 @@ from ultralytics import YOLO
 app = Flask(__name__)
 
 # Configurar CORS para permitir solicitudes desde el frontend en producción
-CORS(app, origins=["https://innervisionai.netlify.app/"])  
+CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})
 
 # Configurar WebSockets
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')

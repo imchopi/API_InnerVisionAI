@@ -4,23 +4,26 @@ from flask_cors import CORS
 import cv2
 import numpy as np
 import requests
-from dotenv import load_dotenv  # Importa la función para cargar .env
+from dotenv import load_dotenv
 import os
 from ultralytics import YOLO
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})  
+CORS(app, resources={r"/*": {"origins": "https://innervisionai.netlify.app"}})
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Cargar variables desde .env
 load_dotenv()
 
-# Cargar modelo YOLO para detección de objetos
-model = YOLO("yolov8n.pt")
+# Cargar modelo YOLO más ligero (YOLOv5n)
+model = YOLO("yolov5n.pt")
 
 # Claves de API de OpenAI obtenidas de las variables de entorno
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+# Limitar el número de conexiones simultáneas
+MAX_CONNECTIONS = 10  # Ajusta según sea necesario
 
 @app.after_request
 def after_request(response):
@@ -29,13 +32,24 @@ def after_request(response):
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     return response
 
+# Función para redimensionar la imagen
+def resize_image(image, target_width=640):
+    height, width = image.shape[:2]
+    scale_factor = target_width / width
+    new_height = int(height * scale_factor)
+    resized_image = cv2.resize(image, (target_width, new_height))
+    return resized_image
+
+@socketio.on('connect')
+def handle_connect():
+    # Limitar el número de conexiones simultáneas
+    if len(socketio.server.manager.rooms) > MAX_CONNECTIONS:
+        raise ConnectionRefusedError('Demasiadas conexiones activas')
+
 @socketio.on('frame')
 def handle_frame(data):
     """
     Procesa un frame recibido desde el frontend, aplica detección de objetos con YOLO y envía las detecciones de vuelta.
-
-    Args:
-        data (dict): Diccionario que contiene la imagen en formato base64.
     """
     try:
         # Decodificar imagen desde base64
@@ -46,12 +60,20 @@ def handle_frame(data):
             print("Error al decodificar la imagen")
             return
 
+        # Redimensionar la imagen para reducir el uso de RAM
+        image = resize_image(image, target_width=640)
+
         # Detectar objetos con YOLO
         results = model(image)
 
+        # Liberar memoria de la imagen
+        del image
+
+        # Limitar el número de detecciones
+        max_detections = 10  # Ajusta según sea necesario
         detections = []
         for result in results:
-            for box in result.boxes:
+            for box in result.boxes[:max_detections]:  # Limitar detecciones
                 xmin, ymin, xmax, ymax = map(int, box.xyxy[0])
                 confidence = round(box.conf.item(), 2)
                 class_id = int(box.cls.item())
@@ -69,14 +91,10 @@ def handle_frame(data):
     except Exception as e:
         print("Error procesando el frame:", str(e))
 
-
 @app.route("/chat", methods=["POST"])
 def chat():
     """
     Maneja las solicitudes del chatbot, enviando el mensaje del usuario a la API de OpenAI y devolviendo la respuesta.
-
-    Returns:
-        JSON: Respuesta generada por el modelo de OpenAI.
     """
     try:
         data = request.json  # Obtener datos de la solicitud HTTP

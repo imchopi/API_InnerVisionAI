@@ -23,12 +23,13 @@ socketio = SocketIO(app, cors_allowed_origins="https://innervisionai.netlify.app
 # Cargar variables de entorno
 load_dotenv()
 
-# Cargar modelo YOLO
-model = YOLO("yolov8n.pt")
-
 # Claves de API de OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+# Cargar modelo YOLO solo cuando sea necesario
+def load_yolo_model():
+    return YOLO("yolov8n.pt")
 
 # Manejar conexiones WebSocket
 @socketio.on('connect')
@@ -43,6 +44,7 @@ def handle_disconnect():
 def handle_frame(data):
     """Procesa un frame y detecta objetos con YOLO."""
     try:
+        model = load_yolo_model()  # Cargar el modelo solo cuando se necesite
         image_bytes = np.frombuffer(data['image'], dtype=np.uint8)
         image = cv2.imdecode(image_bytes, cv2.IMREAD_COLOR)
 
@@ -72,7 +74,7 @@ def handle_frame(data):
 
 @app.route("/")
 def home():
-    return "API de InnerVisionAI funcionando 🚀"
+    return "API de InnerVisionAI funcionando �"
 
 @app.route("/chat", methods=["POST", "OPTIONS"])
 def chat():

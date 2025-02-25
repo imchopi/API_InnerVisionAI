@@ -8,3 +8,4 @@ numpy       # Para cálculos numéricos
 requests   # Para hacer solicitudes HTTP (opcional)
 python-dotenv
 flask_socketio
+flask_cors

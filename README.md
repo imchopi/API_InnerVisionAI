@@ -194,6 +194,15 @@ La API emplea flask_socketio para recibir imágenes desde el frontend en tiempo 
 
 ![api_websocket](https://github.com/user-attachments/assets/0be421ff-2753-4eea-8bb0-560b6aa6c703)
 
+Aunque la anterior imagen representa la función y puede ser engorrosa, la siguiente captura será la zona importante y vital de entender.
+Esta parte es la más importante ya que sin ella, no podríamos representar en el frontend mediante el uso de canvas, pintar los rectángulos de la detección de objetos ya que nos da:
+- Las posiciones de cada objeto
+- Redonde el score del objeto a 2 decimales
+- Gracias a la id, accedemos al nombre de la clase, por ejemplo, 0 - Persona
+- Añadimos esto a una lista finalmente
+  
+![api_socket2](https://github.com/user-attachments/assets/fe737556-a178-4f62-af07-5f0f63d33886)
+
 #### Uso de API REST para el Chatbot Personalizado
 
 Para permitir que los usuarios interactúen con el chatbot, la API implementa un endpoint /chat que recibe preguntas del usuario y responde basándose en el contenido del README.md del proyecto.
@@ -211,6 +220,12 @@ Para permitir que los usuarios interactúen con el chatbot, la API implementa un
 La parte del frontend será expuesta en la sección **8. Desarrollo de la Aplicación Web**
 
 ![api_rest](https://github.com/user-attachments/assets/1045acd4-a22b-44f2-ae54-376e16ca642e)
+
+Vemos aquí mas directamente la parte importante, que usará el rol de system, con lo cual nos permite generar un prompt anterior al promt del usuario, donde gracias a esta función, transformamos el readme...
+![readme](https://github.com/user-attachments/assets/fc3a12d0-7bfc-4919-8424-545b98158e73)
+
+Para conseguir así finalmente que "sesgemos" al modelo para que responda preguntas con base en nuestro Readme.
+![api_chat2](https://github.com/user-attachments/assets/b0b03eec-27d0-43eb-b092-d6e35d641c51)
 
 Las demás lineas de código son necesarias para permisos y utilidad como:
 

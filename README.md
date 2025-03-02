@@ -1,4 +1,41 @@
 ## 1. Justificación y descripción del proyecto.
+**Desarrolladores**
+- Alejandro Fernández Barrionuevo
+- Adrián Perogil Fernández
+- Carlos
+
+**Título**
+InnerVisionAI
+
+**Descripción**
+Un proyecto basado en detección de obstáculos donde, gracias al uso de YOLO, podemos detectar con una cámara todo tipo de objetos en la vida real.
+
+Su uso escalable y la intención con la que se hizo este proyecto fue para ayudar a personas con discapacidades visuales que mediante audio, guiara a las personas
+y pudiera recibir un feedback en todo momento, así pudiendo caminar con mayor comodidad y seguridad. 
+
+Como el tiempo que tuvimos era limitado y era muy ambicioso, nos vimos en la obligación de pensar "niveles" para empezar con algo básico hasta llegar al target.
+
+**Código fuente**
+[WEB](https://github.com/imchopi/InnerVisionAI/tree/feature_alex)
+[API](https://github.com/imchopi/API_InnerVisionAI)
+
+**Presentación en formato PDF**
+Próximamente...
+
+**Enlace a la aplicación web**
+[Página Web](https://innervisionai.netlify.app/home)
+
+**Recursos utilizados**
+- Jira
+
+**Vídeo**
+Próximamente...
+
+**Porcentaje que le corresponde a cada miembro del trabajo realizado de dicho proyecto.**
+Alejandro Fernández Barrionuevo ()
+Adrián Perogil Fernández ()
+Carlos ()
+
 ## 2. Obtención de datos. Se debe especificar la fuente de los datos. Se indicará por qué medios se han obtenido (encuestas, sensores, scrapping, etc.). Los datos se deben cargar en una estructura que permita su posterior manipulación y uso.
 ## 3. Limpieza de datos (eliminación de nulos y datos erróneos, etc.). Descripción de los datos. Se debe dar una descripción completa de los datos indicando qué significa cada uno de los atributos.
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.

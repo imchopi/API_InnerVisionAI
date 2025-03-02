@@ -35,6 +35,27 @@ Próximamente...
 ### **Recursos utilizados**
 
 - Jira
+- YOLOv5
+- Roboflow
+- Google Colab
+- Flask
+- React e Ionic
+- TypeScript
+- Socket.IO
+- OpenAI API
+- Node.js
+- Axios
+- GitHub
+- Netlify
+- Python
+- HTML/CSS
+- Markdown
+- Base64
+- CSV
+- Git
+- DeepSeek
+- ChatGPT
+- Diversos Foros
 
 ### **Vídeo**
 

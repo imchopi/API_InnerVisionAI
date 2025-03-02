@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/d390cd52-737d-452c-8a5a-40f28d50fd2c)## 1. Justificación y descripción del proyecto.
+## 1. Justificación y descripción del proyecto.
 ### **Desarrolladores**
 
 - Alejandro Fernández Barrionuevo

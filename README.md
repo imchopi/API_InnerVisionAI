@@ -152,9 +152,74 @@ Para solucionar estos problemas, proponemos:
 
 A pesar de las dificultades, este proceso nos permitió comprender mejor el flujo de trabajo de YOLOv5 y los retos asociados a la personalización de modelos de detección de objetos. Con algunos ajustes, creemos que podemos completar con éxito el fine-tuning en futuras iteraciones.
 
+### 6.2 Uso de YOLOv5 de Ultralytics y Chatbot personalizado
 
+En este apartado, se describe el proceso de implementación de YOLOv5 de Ultralytics, desde la configuración del entorno hasta la integración con una API en Flask y un frontend en React. El objetivo es demostrar cómo este modelo puede ser utilizado para detectar objetos en tiempo real, enviando los resultados de las detecciones a una interfaz gráfica que permite visualizar las predicciones de manera intuitiva. 
+Además, se aborda la importancia de optimizar el flujo de trabajo para garantizar un rendimiento óptimo, especialmente como tratar el funcionamiento con recursos gratuitos y el limite que establece Netlify y nuestra API con Flask en local.
 
-## 7. Se tiene que incluir alguna de las técnicas estudiadas en el tema de Procesamiento de Lenguaje Natural: expresiones regulares, tokenización, generación de texto, análisis de sentimientos, etc.
+También ideamos un chatbot con una API-KEY de OpenAI, donde con base en nuestro README.md, procese y responda preguntas y cuestiones sobre nuestro proyecto debido a, que nuestro readme va a ser bastante extenso.
+
+Primero explicaremos el funcionamiento de YOLOv5 con Ultralytics.
+
+#### Uso de la API con Flask
+
+La API desarrollada con Flask sirve como el núcleo del proyecto, facilitando la comunicación entre el modelo de detección de objetos YOLOv5 y el chatbot basado en OpenAI. Esta API maneja tanto el procesamiento de imágenes en tiempo real mediante WebSockets como la interacción con el chatbot mediante solicitudes REST.
+
+#### Configuración del Entorno
+
+Antes de ejecutar la API, es necesario asegurarse de que se tienen instaladas todas las dependencias necesarias. Se pueden instalar mediante:
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+(Aconsejable hacer un environment si necesitas versiones específica)
+
+Como la versión de Python que usamos era la 3.10, con ejecutar el comando de arriba, te instalará siempre lo último de esta versión en concreto de python.
+
+#### Uso de WebSocket para Detección de Objetos con YOLOv5
+
+La API emplea flask_socketio para recibir imágenes desde el frontend en tiempo real, procesarlas con YOLOv5 y devolver las detecciones correspondientes.
+
+#### Flujo de Trabajo
+
+- El frontend envía frames codificados en base64 mediante WebSocket.
+
+- La API recibe y decodifica la imagen, luego la redimensiona para mejorar la eficiencia.
+
+- YOLOv5 procesa la imagen y genera predicciones sobre los objetos detectados.
+
+- La API envía las detecciones de vuelta al frontend a través de WebSocket.
+
+![api_websocket](https://github.com/user-attachments/assets/0be421ff-2753-4eea-8bb0-560b6aa6c703)
+
+#### Uso de API REST para el Chatbot Personalizado
+
+Para permitir que los usuarios interactúen con el chatbot, la API implementa un endpoint /chat que recibe preguntas del usuario y responde basándose en el contenido del README.md del proyecto.
+
+#### Flujo de Trabajo
+
+- El usuario envía una solicitud POST a /chat con el mensaje en formato JSON.
+
+- La API obtiene el contenido del README.md desde GitHub.
+
+- Se construye un mensaje para OpenAI combinando la pregunta del usuario y la información del README.md.
+
+- La API envía la solicitud a OpenAI y devuelve la respuesta generada.
+
+La parte del frontend será expuesta en la sección **8. Desarrollo de la Aplicación Web**
+
+![api_rest](https://github.com/user-attachments/assets/1045acd4-a22b-44f2-ae54-376e16ca642e)
+
+Las demás lineas de código son necesarias para permisos y utilidad como:
+
+**CORS**
+![cors1](https://github.com/user-attachments/assets/8f0fc1bd-7060-4089-80d7-5c7b572813e0)
+![cors2](https://github.com/user-attachments/assets/cd79b6b5-5ae4-402f-9195-57947fed27bf)
+
+**Optimización YOLO**
+![yolo1](https://github.com/user-attachments/assets/15184317-f9f6-4be5-ab08-e465cf3b873e)
 
 ## 8. Desarrollo de la Aplicación Web
 

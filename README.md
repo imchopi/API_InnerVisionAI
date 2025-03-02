@@ -2,15 +2,13 @@
 ## 2. Obtención de datos. Se debe especificar la fuente de los datos. Se indicará por qué medios se han obtenido (encuestas, sensores, scrapping, etc.). Los datos se deben cargar en una estructura que permita su posterior manipulación y uso.
 ## 3. Limpieza de datos (eliminación de nulos y datos erróneos, etc.). Descripción de los datos. Se debe dar una descripción completa de los datos indicando qué significa cada uno de los atributos.
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
+
 ## 5. Preparación de los datos para los algoritmos de Machine Learning. Se deben tratar los datos (limpiando, escalando, separando y todo lo que sea necesario) de tal forma que queden listos para entrenar el modelo.
-
-## 6. Entrenamiento del modelo y comprobación del rendimiento. Se entrenarán uno o varios modelos, comprobando en cada caso el rendimiento que ofrecen mediante las apropiadas medidas de error y/o acierto.
-
-### 6.1 Proceso de Fine-Tuning con YOLOv5
+### 5.1 Proceso de Fine-Tuning con YOLOv5
 
 El objetivo del fine-tuning es adaptar un modelo preentrenado de YOLOv5 (yolov5nu.pt) a nuestro dataset, mejorando su capacidad de detección en nuestro caso de uso específico.
 
-### 📂 6.1.1 Preparación del Dataset
+### 📂 5.1.1 Preparación del Dataset
 Para entrenar el modelo, primero preparamos los datos siguiendo los pasos detallados a continuación:
 
 1️⃣ Obtención del Dataset
@@ -112,7 +110,7 @@ El archivo ZIP tiene la siguiente estructura:
 En el directorio `labels` obtenemos archivos .txt con las coordenadas de los objetos.
 
 
-### 🛠 6.1.2 Entrenamiento del Modelo
+### 🛠 5.1.2 Entrenamiento del Modelo
 
 Para el entrenamiento utilizamos el modelo preentrenado **yolov5nu.pt**. Ejecutamos el proceso en Google Colab con GPU habilitada para acelerar el cómputo. Clonamos el repositorio de YOLOv5. Usamos los siguientes parámetros en el script de entrenamiento:
 
@@ -152,7 +150,10 @@ Para solucionar estos problemas, proponemos:
 
 A pesar de las dificultades, este proceso nos permitió comprender mejor el flujo de trabajo de YOLOv5 y los retos asociados a la personalización de modelos de detección de objetos. Con algunos ajustes, creemos que podemos completar con éxito el fine-tuning en futuras iteraciones.
 
-### 6.2 Uso de YOLOv5 de Ultralytics y Chatbot personalizado
+
+## 6. Entrenamiento del modelo y comprobación del rendimiento. Se entrenarán uno o varios modelos, comprobando en cada caso el rendimiento que ofrecen mediante las apropiadas medidas de error y/o acierto.
+
+### 6.1 Uso de YOLOv5 de Ultralytics y Chatbot personalizado
 
 En este apartado, se describe el proceso de implementación de YOLOv5 de Ultralytics, desde la configuración del entorno hasta la integración con una API en Flask y un frontend en React. El objetivo es demostrar cómo este modelo puede ser utilizado para detectar objetos en tiempo real, enviando los resultados de las detecciones a una interfaz gráfica que permite visualizar las predicciones de manera intuitiva. 
 Además, se aborda la importancia de optimizar el flujo de trabajo para garantizar un rendimiento óptimo, especialmente como tratar el funcionamiento con recursos gratuitos y el limite que establece Netlify y nuestra API con Flask en local.

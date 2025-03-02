@@ -947,13 +947,264 @@ Este código **elimina imágenes repetidas o no relevantes** dentro de la carpet
 6️⃣ **Finaliza el proceso** ✅  
    - Al terminar, imprime `"Proceso completado."` indicando que la limpieza ha sido exitosa.  
 
----
 
 📌 **Con esta limpieza, garantizamos que los datos extraídos sean útiles y sin ruido.**  
-Si necesitas más detalles o ajustes, dime y lo adapto para ti. 😊🚀  
-
 
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
+
+
+# FOto
+
+# 🖼️ **Almacenamiento de Imágenes en CSV**  
+
+Después de eliminar las imágenes no deseadas, el siguiente paso es **registrarlas en un archivo CSV**. 📂🔄  
+
+## 🎯 **¿Por qué guardar las imágenes en un CSV?**  
+
+🔹 **Organización** → Permite estructurar los datos para su fácil análisis.  
+🔹 **Integración con Power BI** → Facilita la vinculación con otros datos, como precios o valoraciones.  
+🔹 **Accesibilidad** → Un CSV es ligero y compatible con múltiples herramientas de análisis.  
+
+---
+
+# Foto 
+
+# 📂 **Definición de Carpetas y Lista de Datos**  
+
+Antes de procesar las imágenes, es necesario **definir las carpetas de origen** y **crear una lista para almacenar la información** extraída. 🖼️📊  
+
+---
+
+## 🛠️ **¿Cómo funciona esta parte del código?**  
+
+1️⃣ **Definir las carpetas donde están las imágenes** 📂  
+   - `carpetas_principales = ["../../ikea_muebles/sillas"]`  
+   - Se establece una lista con **las rutas de las carpetas principales**, donde se encuentran las imágenes organizadas en subcarpetas.  
+   - En este caso, se está procesando la carpeta `"sillas"` dentro de `"ikea_muebles"`.  
+
+2️⃣ **Crear una lista para almacenar los datos** 📝  
+   - `data = []`  
+   - Se inicializa una **lista vacía** que **almacenará la información de cada imagen**.  
+   - Posteriormente, en esta lista se guardarán datos como:  
+     - 🖼️ `Nombre del archivo`  
+     - 📂 `Ruta de la imagen`  
+     - 🔠 `Imagen codificada en base64`  
+
+---
+
+# Foto
+
+# 🖼️ **Función `procesar_carpeta`**  
+
+Esta función **recorre carpetas y subcarpetas**, buscando imágenes, **convirtiéndolas a Base64** y almacenándolas en una lista con formato HTML. 📂📊  
+
+---
+
+## 🛠️ **¿Cómo funciona?**  
+
+1️⃣ **Recorre todas las carpetas y subcarpetas** 🔄  
+   - `os.walk(os.path.abspath(carpeta_raiz))`  
+   - Convierte la **ruta relativa en absoluta** para evitar errores.  
+   - **Recorre recursivamente** todas las carpetas y subcarpetas dentro de `carpeta_raiz`.  
+
+2️⃣ **Filtra archivos de imagen** 🏷️  
+   - `if archivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):`  
+   - **Solo procesa archivos de imagen** con extensiones comunes.  
+   - Ignora otros tipos de archivos no relevantes.  
+
+3️⃣ **Convierte la imagen a Base64** 🔄  
+   - `with open(ruta_imagen, "rb") as img_file:`  
+   - Abre la imagen en **modo lectura binaria (`rb`)**.  
+   - `base64.b64encode(img_file.read()).decode('utf-8')`  
+   - **Codifica la imagen en Base64** y la convierte en un **string de texto**.  
+
+4️⃣ **Genera una etiqueta HTML con la imagen en Base64** 🖼️  
+   - `img_html = f'<img src="data:image/png;base64,{base64_str}" width="100"/>'`  
+   - **Crea un fragmento HTML** que puede ser interpretado directamente en Power BI u otras herramientas.  
+   - Se establece un **ancho de `100px`** para previsualización.  
+
+5️⃣ **Agrega la imagen a la lista de datos** 📋  
+   - `data.append([img_html])`  
+   - Guarda la información en la lista `data`, para su posterior almacenamiento en CSV.  
+
+6️⃣ **Manejo de errores** ⚠️  
+   - Si ocurre algún problema al procesar una imagen, el error **se muestra en consola** y el programa sigue ejecutándose.  
+
+---
+
+# Foto 
+
+# 📄 **Conversión de Imágenes a CSV**  
+
+Después de procesar todas las imágenes, este código **crea un DataFrame y lo guarda en un archivo CSV**, asegurando que esté listo para su uso en Power BI u otras herramientas. 📂📊  
+
+---
+
+## 🛠️ **¿Cómo funciona?**  
+
+1️⃣ **Procesa todas las carpetas principales** 📂  
+   - `for carpeta in carpetas_principales:`  
+   - **Recorre cada carpeta** y ejecuta `procesar_carpeta(carpeta)`.  
+   - Se almacenan las imágenes **convertidas a Base64 con formato HTML** en la lista `data`.  
+
+2️⃣ **Crea un DataFrame con los datos** 🏗️  
+   - `df = pd.DataFrame(data, columns=["chair"])`  
+   - Se genera un **DataFrame de Pandas** con una columna llamada `"chair"`.  
+   - **Cada fila contiene una imagen en formato Base64 con etiqueta HTML**.  
+
+3️⃣ **Guarda el DataFrame en un archivo CSV** 💾  
+   - `csv_path = "chair.csv"` define el nombre del archivo.  
+   - `df.to_csv(csv_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL, escapechar="\\")`  
+     - 🔹 **`index=False`** → No guarda el índice del DataFrame.  
+     - 🔹 **`encoding="utf-8-sig"`** → Asegura compatibilidad con **Power BI y Excel**.  
+     - 🔹 **`quoting=csv.QUOTE_MINIMAL`** → Evita problemas con comillas en los datos.  
+     - 🔹 **`escapechar="\\ "`** → Escapa caracteres especiales para evitar errores en la lectura del CSV.  
+
+4️⃣ **Muestra un mensaje de éxito** ✅  
+   - `print(f"✅ Archivo CSV guardado correctamente en: {csv_path}")`  
+   - Confirma que el archivo se ha guardado **sin errores y listo para su análisis**.  
+
+---
+
+# Foto 
+
+# 📦 **Importación de Módulos para la Prueba y Visualización**  
+
+Antes de verificar el correcto funcionamiento de los datos, necesitamos **importar las librerías necesarias** para **cargar, procesar y visualizar las imágenes** almacenadas en el CSV. 📊🖼️  
+
+---
+
+## 🛠️ **¿Qué hace cada módulo?**  
+
+1️⃣ **`pandas` → Manejo de Datos Tabulares** 📊  
+   - `import pandas as pd`  
+   - Permite **cargar el CSV** y trabajar con él como un **DataFrame**.  
+   - Se usará para leer y verificar la estructura de los datos.  
+
+2️⃣ **`matplotlib.pyplot` → Visualización de Datos** 📈  
+   - `import matplotlib.pyplot as plt`  
+   - Nos permite **mostrar las imágenes** contenidas en el CSV.  
+   - Se usará para graficar y confirmar que las imágenes se han guardado correctamente.  
+
+3️⃣ **`base64` → Decodificación de Imágenes** 🔄  
+   - `import base64`  
+   - Convierte las imágenes **de Base64 a un formato visualizable**.  
+   - Se usará para reconstruir las imágenes almacenadas en el CSV.  
+
+4️⃣ **`BytesIO` → Manejo de Archivos en Memoria** 💾  
+   - `from io import BytesIO`  
+   - Permite trabajar con **imágenes sin necesidad de guardarlas en disco**.  
+   - Se usará para cargar imágenes directamente en memoria antes de visualizarlas.  
+
+5️⃣ **`PIL.Image` → Procesamiento de Imágenes** 🖼️  
+   - `from PIL import Image`  
+   - Nos permite **abrir, procesar y mostrar imágenes** en Python.  
+   - Se usará para reconstruir las imágenes en Base64 y mostrarlas en pantalla.  
+
+---
+
+# Foto 
+
+# 📄 **Lectura y Extracción de Imágenes desde CSV**  
+
+En este paso, **cargamos el archivo CSV y extraemos la primera imagen** almacenada en formato Base64 para verificar su correcta codificación. 📂🖼️  
+
+---
+
+## 🛠️ **¿Cómo funciona?**  
+
+1️⃣ **Carga el archivo CSV** 📄  
+   - `df = pd.read_csv('chair.csv')`  
+   - **Lee el archivo `chair.csv`** usando Pandas y lo almacena en un **DataFrame**.  
+   - Contiene la columna `"chair"` con imágenes en formato **Base64 dentro de etiquetas HTML**.  
+
+2️⃣ **Obtiene la primera fila del DataFrame** 🔍  
+   - `first_row = df.iloc[0]`  
+   - Usa `.iloc[0]` para **seleccionar la primera fila** del DataFrame.  
+   - Se extrae una imagen **para verificar que los datos están bien guardados**.  
+
+3️⃣ **Extrae la imagen en Base64** 🏗️  
+   - `img_base64 = first_row['chair']`  
+   - Se accede a la columna `"chair"` de la primera fila.  
+   - **Aquí se encuentra el código Base64 dentro de una etiqueta HTML**.  
+
+---
+
+# Foto 
+
+# 🖼️ **Verificación, Decodificación y Visualización de la Imagen**  
+
+Este código **verifica que la imagen en Base64 esté en el formato correcto, la decodifica y la muestra en pantalla**. 📂🔍  
+
+---
+
+## 🛠️ **¿Cómo funciona?**  
+
+1️⃣ **Verifica si la cadena Base64 tiene un prefijo de datos** 🔎  
+   - `if ',' in img_base64:`  
+   - Algunas imágenes en Base64 **pueden incluir un prefijo**, por ejemplo:  
+     ```
+     data:image/png;base64,iVBORw...
+     ```
+   - Si hay una coma `,`, significa que el prefijo está presente.  
+   - `img_base64.split(',')[1]` extrae **solo la parte Base64**, eliminando `"data:image/png;base64,"`.  
+
+2️⃣ **Asegura que la longitud de la cadena sea un múltiplo de 4** 🔢  
+   - `padding = len(img_base64) % 4`  
+   - Base64 **debe tener una longitud en múltiplos de 4**.  
+   - Si no lo es, **se agregan los caracteres `=` necesarios** para corregir la cadena.  
+   - `img_base64 += '=' * (4 - padding)` **corrige la longitud si es necesario**.  
+
+3️⃣ **Intenta decodificar la imagen** 🏗️  
+   - `img_data = base64.b64decode(img_base64)`  
+   - Convierte la cadena **de Base64 a datos binarios de imagen**.  
+
+4️⃣ **Convierte los datos en una imagen visualizable** 🖼️  
+   - `img = Image.open(BytesIO(img_data))`  
+   - Usa `BytesIO` para **convertir los datos binarios en una imagen sin guardarla en disco**.  
+   - `Image.open()` abre la imagen lista para ser visualizada.  
+
+5️⃣ **Muestra la imagen** 📊  
+   - `plt.figure()` → Crea una nueva figura para la imagen.  
+   - `plt.imshow(img)` → Muestra la imagen decodificada.  
+   - `plt.axis('off')` → Oculta los ejes para mejorar la visualización.  
+   - `plt.show()` → Muestra la imagen en pantalla.  
+
+6️⃣ **Manejo de errores** ⚠️  
+   - Si ocurre un error en la decodificación, se captura con `except Exception as e`.  
+   - Se imprime un mensaje de error con `print(f"Error al decodificar la imagen: {e}")`.  
+
+---
+
+# Foto 
+
+# 🖱️ **Verificación de Datos de Ratones**  
+
+Ahora que hemos extraído y almacenado los datos, **vamos a verificar su integridad** antes de proceder con la visualización en Power BI. 📊  
+
+---
+
+# Foto
+
+## 🛠️ **¿Cómo funciona esta prueba?**  
+
+1️⃣ **Carga el archivo CSV** 📂  
+   - `df_datos = pd.read_csv('/content/ratones_p1.csv')`  
+   - Usa Pandas para **leer los datos almacenados en el archivo CSV**.  
+
+2️⃣ **Muestra las primeras filas** 🔍  
+   - `print(df_datos.head())`  
+   - Permite visualizar las primeras 5 filas del dataset para asegurarnos de que los datos están bien organizados.  
+
+3️⃣ **Verifica si hay valores nulos** ⚠️  
+   - `print(df_datos.isna())`  
+   - Devuelve un **DataFrame con valores `True` o `False`**, indicando si hay datos faltantes.  
+
+4️⃣ **Cuenta los valores nulos por columna** 🔢  
+   - `print(df_datos.isna().sum())`  
+   - Muestra **cuántos valores nulos hay en cada columna**, ayudando a identificar posibles problemas en los datos.  
+
+---
 
 ## 5. Preparación de los datos para los algoritmos de Machine Learning. Se deben tratar los datos (limpiando, escalando, separando y todo lo que sea necesario) de tal forma que queden listos para entrenar el modelo.
 

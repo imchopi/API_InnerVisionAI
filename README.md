@@ -529,7 +529,7 @@ Para mejorar la presentación de las respuestas, convertimos ciertos elementos a
 
 ✨ **Vista del chatbot funcionando:**
 
-[Imagen del chatbot]
+![chatbot](https://github.com/user-attachments/assets/915472c2-ab6a-485f-ac20-7fb3b2ff22d0)
 
 Con esta implementación ofrecemos una experiencia fluida y responsiva, permitiendo a los usuarios interactuar con el asistente virtual de manera sencilla y eficiente. 🚀
 

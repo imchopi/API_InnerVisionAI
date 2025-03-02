@@ -237,6 +237,9 @@ Las demás lineas de código son necesarias para permisos y utilidad como:
 **Optimización YOLO**
 ![yolo1](https://github.com/user-attachments/assets/15184317-f9f6-4be5-ab08-e465cf3b873e)
 
+## 7. Se tiene que incluir alguna de las técnicas estudiadas en el tema de Procesamiento de Lenguaje Natural: expresiones regulares, tokenización, generación de texto, análisis de sentimientos, etc.
+
+
 ## 8. Desarrollo de la Aplicación Web
 
 Nuestra aplicación web ha sido desarrollada utilizando **React** e **Ionic** con **TypeScript**, proporcionando una experiencia moderna y responsiva. A continuación, describimos los principales componentes de la web junto con capturas del código y la interfaz.

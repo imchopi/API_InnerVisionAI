@@ -42,9 +42,9 @@ Próximamente...
 
 ### **Porcentaje que le corresponde a cada miembro del trabajo realizado de dicho proyecto.**
 
-Alejandro Fernández Barrionuevo ()
-Adrián Perogil Fernández ()
-Carlos ()
+- Alejandro Fernández Barrionuevo ()
+- Adrián Perogil Fernández ()
+- Carlos ()
 
 ## 2. Obtención de datos. Se debe especificar la fuente de los datos. Se indicará por qué medios se han obtenido (encuestas, sensores, scrapping, etc.). Los datos se deben cargar en una estructura que permita su posterior manipulación y uso.
 ## 3. Limpieza de datos (eliminación de nulos y datos erróneos, etc.). Descripción de los datos. Se debe dar una descripción completa de los datos indicando qué significa cada uno de los atributos.

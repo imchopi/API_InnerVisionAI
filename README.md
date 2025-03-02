@@ -3,7 +3,157 @@
 ## 3. Limpieza de datos (eliminación de nulos y datos erróneos, etc.). Descripción de los datos. Se debe dar una descripción completa de los datos indicando qué significa cada uno de los atributos.
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
 ## 5. Preparación de los datos para los algoritmos de Machine Learning. Se deben tratar los datos (limpiando, escalando, separando y todo lo que sea necesario) de tal forma que queden listos para entrenar el modelo.
+
 ## 6. Entrenamiento del modelo y comprobación del rendimiento. Se entrenarán uno o varios modelos, comprobando en cada caso el rendimiento que ofrecen mediante las apropiadas medidas de error y/o acierto.
+
+### 6.1 Proceso de Fine-Tuning con YOLOv5
+
+El objetivo del fine-tuning es adaptar un modelo preentrenado de YOLOv5 (yolov5nu.pt) a nuestro dataset, mejorando su capacidad de detección en nuestro caso de uso específico.
+
+### 📂 6.1.1 Preparación del Dataset
+Para entrenar el modelo, primero preparamos los datos siguiendo los pasos detallados a continuación:
+
+1️⃣ Obtención del Dataset
+
+Realizamos scraping de imágenes, almacenándolas en un archivo CSV en formato base64.
+
+📌 Ejemplo de archivo:
+![image](https://github.com/user-attachments/assets/6803008a-0ca4-4ad6-830b-18efb486ba31)
+
+---
+
+2️⃣ Conversión de Imágenes
+
+Como las imágenes estaban almacenadas en formato base64, era necesario decodificarlas para poder usarlas en el entrenamiento.
+
+Utilizamos el siguiente script en Python para convertir las imágenes de base64 a `.jpg`:
+
+![image](https://github.com/user-attachments/assets/58af828c-a9dc-40a4-9005-2d6db3b7bb56)
+
+---
+
+3️⃣ Etiquetado de Imágenes
+
+Para entrenar un modelo de detección de objetos, cada imagen necesita etiquetas con las coordenadas de los objetos. Utilizamos **Roboflow**, una plataforma que permite:
+
+- ✅ Subir imágenes.
+- ✅ Etiquetar imágenes manualmente o automáticamente con herramientas de anotación.
+- ✅ Convertir el dataset a formatos compatibles con modelos de detección como YOLOv5.
+- ✅ Dividir los datos en conjuntos de entrenamiento, validación y prueba.
+
+Nuestro objetivo fue **etiquetar automáticamente** imágenes del dataset para detectar objetos de interés y exportarlas en formato YOLOv5.
+
+🔹 Creación de un Proyecto en Roboflow
+
+- Asignamos un nombre al proyecto, por ejemplo: cupboard_detection.
+- Seleccionamos el tipo de modelo: Object Detection (YOLOv5, COCO, etc.)
+
+![image](https://github.com/user-attachments/assets/6ad1ed78-265d-44b6-8ecb-ff13b256031b)
+  
+
+🔹 Subida de Imágenes al Proyecto
+
+![image](https://github.com/user-attachments/assets/5c00338e-e366-49b7-b870-caab13064313)
+
+🔹 Etiquetado Automático de Objetos
+
+Dado que Roboflow cuenta con herramientas de etiquetado automático, utilizamos esta opción para generar anotaciones sin intervención manual.
+
+![image](https://github.com/user-attachments/assets/65260858-f3dd-4f6e-b690-78e095ef2e20)
+
+Si bien el etiquetado automático es preciso, verificamos que las anotaciones fueran correctas.
+
+![image](https://github.com/user-attachments/assets/b50e683b-e12b-4f62-906e-a672ed6310d8)
+
+En caso de errores, ajustamos manualmente las etiquetas antes de continuar para completar el proceso.
+
+![image](https://github.com/user-attachments/assets/ebea7738-f6de-4def-853f-dd361ac78e29)
+
+Después de la comprobación añadimos las etiquetas aprobadas.
+
+![image](https://github.com/user-attachments/assets/faf2c310-4d9d-47ba-8a08-9e818f91ae73)
+
+
+
+🔹 Exportación del Dataset en Formato YOLOv5
+
+Para utilizar las imágenes etiquetadas en el entrenamiento del modelo, exportamos el dataset en formato YOLOv5.
+
+Roboflow nos permite dividir el dataset en tres subconjuntos:
+- 80% para entrenamiento (train)
+- 10% para validación (valid)
+- 10% para prueba (test)
+
+![image](https://github.com/user-attachments/assets/9a021657-f59a-4b1c-bac5-f258790e0bf2)
+
+En la sección de exportación, seleccionamos YOLOv5 como formato de salida y descargamos un archivo ZIP.
+
+![image](https://github.com/user-attachments/assets/a4fd3ee4-1efb-4581-8b08-c9d18a9aefb9)
+
+El archivo ZIP tiene la siguiente estructura:
+
+```
+/dataset
+│── test/    # 10% de imágenes para prueba
+│   ├── images/
+│   ├── labels/   
+│
+│── train/   # 80% de imágenes para entrenamiento
+│   ├── images/
+│   ├── labels/
+|
+│── valid/   # 10% de imágenes para validación
+│   ├── images/
+│   ├── labels/
+│
+│── data.yaml    # Archivo de configuración del dataset
+```
+
+En el directorio `labels` obtenemos archivos .txt con las coordenadas de los objetos.
+
+
+### 🛠 6.1.2 Entrenamiento del Modelo
+
+Para el entrenamiento utilizamos el modelo preentrenado **yolov5nu.pt**. Ejecutamos el proceso en Google Colab con GPU habilitada para acelerar el cómputo. Clonamos el repositorio de YOLOv5. Usamos los siguientes parámetros en el script de entrenamiento:
+
+```python
+!python train.py \
+  --weights /content/drive/MyDrive/Models/yolov5nu.pt \
+  --data /content/drive/MyDrive/YOLO_Dataset/data.yaml \
+  --epochs 50 \
+  --batch-size 16 \
+  --imgsz 640 \
+  --optimizer SGD \
+  --device 0
+```
+
+Sin embargo, durante la ejecución del entrenamiento encontramos errores relacionados con la configuración de los anchors en el modelo. El siguiente es un ejemplo de los errores que recibimos:
+
+```
+RuntimeError: shape '[3, -1, 2]' is invalid for input of size 3
+```
+
+Este error sugiere que los anchors definidos en el modelo no se ajustaban correctamente al número de clases u otras dimensiones esperadas. Intentamos modificar la configuración, pero el problema persistió.
+
+---
+
+⚠️ Problemas Encontrados y Conclusión
+
+No logramos completar el fine-tuning debido a erroresencontrados. Las posibles causas incluyen:
+
+1. **Incompatibilidad en los anchors**: La configuración de los anchors puede no haber sido adecuada para nuestro dataset. 
+2. **Formato incorrecto en el archivo data.yaml**: Es posible que las clases o los parámetros en el archivo no estuvieran correctamente definidos.
+3. **Modelo preentrenado incompatible**: Puede que el modelo **yolov5nu.pt** no estuviera configurado correctamente para ser reutilizado con nuevos datos.
+
+Para solucionar estos problemas, proponemos:
+- Revisar el formato de **data.yaml** y asegurarnos de que está bien definido.
+- Ajustar los anchors manualmente o permitir que YOLO los recalibre automáticamente.
+- Probar con otro modelo preentrenado de YOLOv5 para verificar compatibilidad.
+
+A pesar de las dificultades, este proceso nos permitió comprender mejor el flujo de trabajo de YOLOv5 y los retos asociados a la personalización de modelos de detección de objetos. Con algunos ajustes, creemos que podemos completar con éxito el fine-tuning en futuras iteraciones.
+
+
+
 ## 7. Se tiene que incluir alguna de las técnicas estudiadas en el tema de Procesamiento de Lenguaje Natural: expresiones regulares, tokenización, generación de texto, análisis de sentimientos, etc.
 
 ## 8. Desarrollo de la Aplicación Web

@@ -1,4 +1,4 @@
-## 1. Justificación y descripción del proyecto.
+![image](https://github.com/user-attachments/assets/d390cd52-737d-452c-8a5a-40f28d50fd2c)## 1. Justificación y descripción del proyecto.
 ### **Desarrolladores**
 
 - Alejandro Fernández Barrionuevo
@@ -305,8 +305,47 @@ Las demás lineas de código son necesarias para permisos y utilidad como:
 **Optimización YOLO**
 ![yolo1](https://github.com/user-attachments/assets/15184317-f9f6-4be5-ab08-e465cf3b873e)
 
+---
+
 ## 7. Se tiene que incluir alguna de las técnicas estudiadas en el tema de Procesamiento de Lenguaje Natural: expresiones regulares, tokenización, generación de texto, análisis de sentimientos, etc.
 
+En el proyecto hemos integrado diversas técnicas de **Procesamiento de Lenguaje Natural (PLN)** para mejorar la interacción con el usuario y optimizar el análisis de texto.
+
+### 7.1. Uso de Expresiones Regulares en el Formateo de Respuestas del Chatbot
+
+En la página de `Chatbot.tsx` hemos desarrollado una función llamada `formatResponse()`, cuya finalidad es mejorar la legibilidad de los mensajes del chatbot al usuario. Para ello, aplicamos **expresiones regulares** que permiten transformar ciertos patrones de texto en formato HTML.
+
+📌 Código de la función:
+![image](https://github.com/user-attachments/assets/3077c79d-38dd-4a5d-8cc7-6e688da97c0c)
+
+Desglose del código:
+
+1️⃣ `replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')`:
+
+- Busca cualquier texto encerrado entre `**` y lo reemplaza por `<strong>`, convirtiéndolo en negrita.
+- Ejemplo: `"Este es un **mensaje importante**"` → `"Este es un <strong>mensaje importante</strong>"`.
+
+2️⃣ `replace(/\n/g, '<br>')`:
+
+- Reemplaza los saltos de línea (`\n`) por etiquetas HTML `<br>`, asegurando que el texto respete los espacios entre líneas.
+- Ejemplo: `"Línea 1\nLínea 2"` → `"Línea 1<br>Línea 2"`.
+
+3️⃣ `replace(/\d+\. /g, '<br>• ')`:
+
+- Busca listas numeradas (`1. Texto`, `2. Texto`, etc.) y las convierte en listas con viñetas (`• Texto`).
+- Ejemplo:
+  
+```plaintext
+1. Manzana
+2. Pera
+```
+Se transformará en:
+```html
+Copiar
+Editar
+<br>• Manzana
+<br>• Pera
+```
 
 ## 8. Desarrollo de la Aplicación Web
 

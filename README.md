@@ -1322,8 +1322,6 @@ Este fragmento de código **ejecuta una consulta SQL en los datos, transforma el
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
 
 
-
-
 # 🖼️ **Almacenamiento de Imágenes en CSV**  
 
 Después de eliminar las imágenes no deseadas, el siguiente paso es **registrarlas en un archivo CSV**. 📂🔄  
@@ -1331,7 +1329,6 @@ Después de eliminar las imágenes no deseadas, el siguiente paso es **registrar
 ## 🎯 **¿Por qué guardar las imágenes en un CSV?**  
 
 🔹 **Organización** → Permite estructurar los datos para su fácil análisis.  
-🔹 **Integración con Power BI** → Facilita la vinculación con otros datos, como precios o valoraciones.  
 🔹 **Accesibilidad** → Un CSV es ligero y compatible con múltiples herramientas de análisis.  
 
 ---
@@ -1389,8 +1386,7 @@ Esta función **recorre carpetas y subcarpetas**, buscando imágenes, **convirti
    - **Codifica la imagen en Base64** y la convierte en un **string de texto**.  
 
 4️⃣ **Genera una etiqueta HTML con la imagen en Base64** 🖼️  
-   - `img_html = f'<img src="data:image/png;base64,{base64_str}" width="100"/>'`  
-   - **Crea un fragmento HTML** que puede ser interpretado directamente en Power BI u otras herramientas.  
+   - `img_html = f'<img src="data:image/png;base64,{base64_str}" width="100"/>'`
    - Se establece un **ancho de `100px`** para previsualización.  
 
 5️⃣ **Agrega la imagen a la lista de datos** 📋  
@@ -1406,7 +1402,7 @@ Esta función **recorre carpetas y subcarpetas**, buscando imágenes, **convirti
 
 # 📄 **Conversión de Imágenes a CSV**  
 
-Después de procesar todas las imágenes, este código **crea un DataFrame y lo guarda en un archivo CSV**, asegurando que esté listo para su uso en Power BI u otras herramientas. 📂📊  
+Después de procesar todas las imágenes, este código **crea un DataFrame y lo guarda en un archivo CSV**, asegurando que esté listo para el entrenamiento del modelo.
 
 ---
 
@@ -1426,7 +1422,7 @@ Después de procesar todas las imágenes, este código **crea un DataFrame y lo 
    - `csv_path = "chair.csv"` define el nombre del archivo.  
    - `df.to_csv(csv_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL, escapechar="\\")`  
      - 🔹 **`index=False`** → No guarda el índice del DataFrame.  
-     - 🔹 **`encoding="utf-8-sig"`** → Asegura compatibilidad con **Power BI y Excel**.  
+     - 🔹 **`encoding="utf-8-sig"`** → Asegura compatibilidad con **Excel**.  
      - 🔹 **`quoting=csv.QUOTE_MINIMAL`** → Evita problemas con comillas en los datos.  
      - 🔹 **`escapechar="\\ "`** → Escapa caracteres especiales para evitar errores en la lectura del CSV.  
 
@@ -1578,7 +1574,7 @@ Una vez que hemos procesado y comprobado de que no tiene **null** en ninguna fil
 
 ![image](/API_InnerVisionAI/Imagenes/Power%20Bi/2025-03-03%2008_56_15-Inervision.png)
 
-Para visualizar el Power Bi de manera interactiva aqui. **Nota** : Es importante tener cuenta de power BI para poder acceder. 
+Para visualizar el Power Bi de manera interactiva [aqui](https://app.powerbi.com/links/GojVNB_DqB?ctid=e0793d39-0939-496d-b129-198edd916feb&pbi_source=linkShare). **Nota** : Es importante tener cuenta de power BI para poder acceder. 
 
 ## 5. Preparación de los datos para los algoritmos de Machine Learning. Se deben tratar los datos (limpiando, escalando, separando y todo lo que sea necesario) de tal forma que queden listos para entrenar el modelo.
 ### 5.1 Proceso de Fine-Tuning con YOLOv5

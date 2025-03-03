@@ -66,7 +66,7 @@ Como el tiempo que tuvimos era limitado y era muy ambicioso, nos vimos en la obl
 
 - Alejandro Fernández Barrionuevo (33.33%)
 - Adrián Perogil Fernández (33.33%)
-- Carlos (33.33%)
+- Carlos López Muñoz (33.33%)
 
 ## 2. Obtención de datos. Se debe especificar la fuente de los datos. Se indicará por qué medios se han obtenido (encuestas, sensores, scrapping, etc.). Los datos se deben cargar en una estructura que permita su posterior manipulación y uso.
 

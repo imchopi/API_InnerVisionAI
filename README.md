@@ -1565,7 +1565,7 @@ Ahora que hemos extraído y almacenado los datos, **vamos a verificar su integri
 
 Una vez que hemos procesado y comprobado de que no tiene **null** en ninguna fila, el siguiente paso es **visualizarlos en Power BI** para analizarlos de manera más intuitiva. 📈✨  
 
-<img src="/API_InnerVisionAI/Imagenes/Power%20Bi/2025-03-03%2008_56_15-Inervision.png">
+<img src="/Imagenes/Power Bi/innervision.png">
 
 Para visualizar el Power Bi de manera interactiva [aqui](https://app.powerbi.com/links/GojVNB_DqB?ctid=e0793d39-0939-496d-b129-198edd916feb&pbi_source=linkShare). **Nota** : Es importante tener cuenta de power BI para poder acceder. 
 

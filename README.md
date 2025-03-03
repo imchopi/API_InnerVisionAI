@@ -1,4 +1,82 @@
-## 1. Justificación y descripción del proyecto.
+<## 1. Justificación y descripción del proyecto.
+
+![image](https://github.com/user-attachments/assets/d390cd52-737d-452c-8a5a-40f28d50fd2c)## 1. Justificación y descripción del proyecto.
+### **Desarrolladores**
+
+- Alejandro Fernández Barrionuevo
+- Adrián Perogil Fernández
+- Carlos
+
+### **Título**
+
+InnerVisionAI
+
+### **Descripción**
+
+Un proyecto basado en detección de obstáculos donde, gracias al uso de YOLO, podemos detectar con una cámara todo tipo de objetos en la vida real.
+
+Su uso escalable y la intención con la que se hizo este proyecto fue para ayudar a personas con discapacidades visuales que mediante audio, guiara a las personas
+y pudiera recibir un feedback en todo momento, así pudiendo caminar con mayor comodidad y seguridad. 
+
+Como el tiempo que tuvimos era limitado y era muy ambicioso, nos vimos en la obligación de pensar "niveles" para empezar con algo básico hasta llegar al target.
+
+### **Código fuente**
+
+[WEB](https://github.com/imchopi/InnerVisionAI/tree/feature_alex)
+
+[API](https://github.com/imchopi/API_InnerVisionAI)
+
+### **Presentación en formato PDF**
+
+Próximamente...
+
+### **Enlace a la aplicación web**
+
+[Página Web](https://innervisionai.netlify.app/home)
+
+### **Recursos utilizados**
+
+- Jira
+- YOLOv5
+- Roboflow
+- Google Colab
+- Flask
+- React e Ionic
+- TypeScript
+- Socket.IO
+- OpenAI API
+- Node.js
+- Axios
+- GitHub
+- Netlify
+- Python
+- HTML/CSS
+- Markdown
+- Base64
+- CSV
+- Git
+- DeepSeek
+- ChatGPT
+- Diversos Foros
+- Claude  
+- BeuatifulSoup
+- Selenium
+- AWS Glue 
+- Documentación de AWS
+- Youtube 
+- Regex 
+
+
+### **Vídeo**
+
+Próximamente...
+
+### **Porcentaje que le corresponde a cada miembro del trabajo realizado de dicho proyecto.**
+
+- Alejandro Fernández Barrionuevo ()
+- Adrián Perogil Fernández ()
+- Carlos ()
+
 
 ## 2. Obtención de datos. Se debe especificar la fuente de los datos. Se indicará por qué medios se han obtenido (encuestas, sensores, scrapping, etc.). Los datos se deben cargar en una estructura que permita su posterior manipulación y uso.
 
@@ -16,7 +94,7 @@ A continuación, explicaré las librerías que usaremos 📚 para llevar a cabo 
 
 ### 📌 Librerías utilizadas para la extracción de datos
 
-# Foto 
+<img src="Imagenes/IKEA/Imagen-1.png" width="600" height="300">
 
 Para poder extraer información de la web, utilizamos varias librerías 📚 que nos ayudarán en diferentes tareas:
 
@@ -52,7 +130,7 @@ Voy a explicar **cada parte** para que sea fácil de entender y seguir 📌.
 
 ---
 
-## FOTO 
+<img src="Imagenes/IKEA/Imagen-2.png" width="700" height="400">
 
 # 🖥️ Clase IKEA Scraper
 
@@ -85,6 +163,8 @@ Como la web tiene **botones interactivos**, usamos **Selenium** para controlarla
 
 ---
 
+<img src="Imagenes/IKEA/Imagen-3.png" width="600" height="300">
+
 ## 📁 Función `create_directories`
 
 Esta función se encarga de **crear carpetas** en el sistema para almacenar las imágenes de cada categoría 🗂️.
@@ -106,7 +186,7 @@ Esta función se encarga de **crear carpetas** en el sistema para almacenar las 
 
 --- 
 
-## FOTO 
+<img src="Imagenes/IKEA/Imagen-4.png" width="600" height="300"> 
 
 ## 🖼️ Función `download_image`
 
@@ -132,7 +212,7 @@ Esta función **descarga una imagen desde una URL y la guarda en el sistema** �
 
 ---
 
-# Foto 
+<img src="Imagenes/IKEA/Imagen-5.png" width="600" height="300"> 
 
 ## 🔄 Función `load_all_products`
 
@@ -159,7 +239,7 @@ Esta función **carga todos los productos de la página web** haciendo clic en e
 
 ---
 
-# Foto 
+<img src="Imagenes/IKEA/Imagen-6.png" width="800" height="500"> 
 
 ## 🔍 Función `scrape_category`
 
@@ -194,7 +274,7 @@ Esta función **extrae imágenes de productos** de una **categoría específica*
 
 ---
 
-# Foto 
+<img src="Imagenes/IKEA/Imagen-7.png" width="800" height="500"> 
 
 ## 🚀 Función `run`
 
@@ -222,7 +302,7 @@ Esta función **ejecuta el scraping completo** en todas las categorías definida
 
 --- 
 
-# Foto 
+<img src="Imagenes/IKEA/Imagen-8.png" width="600" height="300"> 
 
 ## 🏁 Ejecución del scraper en local
 
@@ -287,7 +367,7 @@ Dado que los códigos son casi **idénticos**, solo mostraré el código corresp
 
 📌 **A continuación, el código para extraer información de los ratones en PCComponentes** 🚀.
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-1.png" width="600" height="300"> 
 
 ## 📚 Librerías utilizadas para el scraping de PCComponentes  
 
@@ -313,7 +393,7 @@ Dado que la web de **PCComponentes** requiere **interacción con la paginación*
 
 ---
 
-# FOTO
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-2.png" width="600" height="300">  
 
 ## 🖱️ Clase `PCscrapper`
 
@@ -334,7 +414,8 @@ Cuando creamos un objeto de esta clase, se ejecuta el código de inicialización
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-3.png" width="600" height="300"> 
+
 
 ## 📂 Función `create_directories`
 
@@ -357,7 +438,7 @@ Esta función se encarga de **crear carpetas** en el sistema para almacenar las 
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-4.png" width="800" height="300"> 
 
 ## 🖼️ Función `download_image`
 
@@ -387,7 +468,7 @@ Esta función **descarga una imagen desde una URL y la guarda en el sistema** �
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-5.png" width="900" height="600"> 
 
 ## 📸 Función `download_products_images`
 
@@ -422,7 +503,7 @@ Esta función **descarga imágenes de una página web de manera automática** �
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-6.png" width="600" height="300">   
 
 ## 🚀 Función `run`
 
@@ -446,7 +527,7 @@ Esta función **ejecuta el scraper** y se encarga de **organizar y descargar las
 
 ---
 
-# FOTO 
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-7.png" width="600" height="300">  
 
 ## 🖥️ Bloque `if __name__ == "__main__"`
 
@@ -499,7 +580,7 @@ Próximo paso: **unir los 27 CSV en un solo archivo** y prepararlo para **Power 
 
 ## Código para la obtención de datos. 
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-1.png" width="600" height="300">  
 
 ## 📦 **Módulos importados en el scraper**  
 
@@ -528,7 +609,7 @@ Este bloque de código **importa todas las librerías necesarias** para el funci
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-2.png" width="600" height="300">  
 
 ## 🖥️ **Clase `PCScraper`**
 
@@ -552,7 +633,7 @@ Esta clase define el **scraper** encargado de extraer información de ratones en
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-3.png" width="600" height="300">  
 
 ## 🌐 **Función `start_driver`**
 
@@ -575,7 +656,8 @@ Esta función **inicia una nueva sesión del navegador Chrome** con configuracio
 
 ---
 
-# FOTO 
+
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-4.png" width="600" height="300">  
 
 ## ❌ **Función `close_driver`**  
 
@@ -589,7 +671,8 @@ Esta función **cierra el navegador** una vez que el scraping ha terminado, aseg
 
 ---
 
-# FOTO 
+
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-5.png" width="600" height="300">  
 
 ## 🍪 **Función `accept_cookies`**  
 
@@ -610,7 +693,7 @@ Esta función **acepta las cookies automáticamente** si el botón está present
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-6.png" width="600" height="300">  
 
 ## 🔗 **Función `generate_url`**  
 
@@ -638,7 +721,8 @@ Esta función **genera una URL válida** para un producto a partir de su nombre,
      ```  
 --- 
 
-# FOTO 
+
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-7.png" width="2000" height="1000">  
 
 ## 🛒 **Función `scrape_category`**  
 
@@ -774,7 +858,9 @@ Esta última parte de la función **guarda los datos extraídos en una lista y m
 
 ---
 
-# Foto 
+
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-8.png" width="600" height="300">  
+
 
 ### 📂 **Función `scrape_all_categories`**  
 
@@ -818,7 +904,9 @@ Esta función **recorre todas las páginas de productos de la categoría y guard
 
 ---
 
-# Foto 
+
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-9.png" width="600" height="300">  
+
 
 ## 🏁 **Ejecución del Scraper**  
 
@@ -910,7 +998,8 @@ El proceso de limpieza de datos en este proyecto es **sencillo pero esencial** p
 
 ---
 
-# Foto 
+<img src="Imagenes/PCCOMPONENTES/Limpieza de datos/imagen-1.png" width="600" height="300">  
+
 
 # 🗑️ **Eliminación de Imágenes No Deseadas**  
 
@@ -947,13 +1036,293 @@ Este código **elimina imágenes repetidas o no relevantes** dentro de la carpet
 6️⃣ **Finaliza el proceso** ✅  
    - Al terminar, imprime `"Proceso completado."` indicando que la limpieza ha sido exitosa.  
 
-
 📌 **Con esta limpieza, garantizamos que los datos extraídos sean útiles y sin ruido.**  
+
+# 🔄 **ETL en AWS Glue: Unificación y Transformación de Datos**  
+
+Ahora que los datos están listos, realizaremos un **proceso ETL (Extract, Transform, Load)** en **AWS Glue** para unir toda la información y crear una nueva columna.  
+
+---
+
+## 🛠️ **¿Qué es una ETL?**  
+
+🔹 **ETL** significa **Extract, Transform, Load** (**Extraer, Transformar y Cargar**).  
+🔹 Es un proceso fundamental en **ingeniería de datos** que permite:  
+   1. **Extract (Extracción):** Obtener datos desde múltiples fuentes (**CSV, bases de datos, APIs, etc.**).  
+   2. **Transform (Transformación):** Limpiar, unir, modificar y generar nuevas columnas.  
+   3. **Load (Carga):** Guardar los datos transformados en un formato optimizado (**S3, Redshift, Power BI, etc.**).  
+
+---
+
+## 🚀 **ETL en AWS Glue con PySpark y Modo Visual**  
+
+AWS Glue es un servicio **serverless** que permite **automatizar procesos ETL** con dos enfoques principales:  
+
+🔹 **Modo Visual (Similar a Spoon)** 🖱️  
+   - Ofrece una **interfaz gráfica** donde se pueden **arrastrar y conectar componentes**.  
+   - Es útil para tareas básicas, pero **tiene limitaciones en personalización**.  
+
+🔹 **Modo Código (PySpark)** 📝  
+   - Permite **personalizar transformaciones avanzadas** y trabajar con grandes volúmenes de datos.  
+   - Es **más flexible**, ideal para procesos complejos.  
+
+🔹 **Nuestro Enfoque**  
+   - **Trabajaremos en el modo visual hasta cierto punto** para facilitar la manipulación de datos.  
+   - Luego, **cambiaremos a código (PySpark)** cuando necesitemos **guardar múltiples archivos en uno solo**.  
+
+---
+
+## 🎯 **Objetivo de nuestra ETL**  
+
+✅ **Unificar toda la información** proveniente de diferentes archivos CSV.  
+✅ **Crear una nueva columna** con datos transformados.  
+✅ **Optimizar los datos y consolidarlos en un único fichero** para su análisis en Power BI.  
+
+---
+
+
+<img src="Imagenes/ETL/imagen-1.png" width="600" height="300">  
+
+# 🛠️ **Diseño de la ETL en AWS Glue (Modo Visual)**  
+
+La imagen muestra la configuración de una ETL en **AWS Glue Studio**, utilizando el **modo visual** para procesar los datos de un bucket de **Amazon S3**, transformarlos con **SQL Query** y almacenarlos nuevamente en **S3**.  
+
+---
+
+## 🔍 **Estructura de la ETL en la imagen**  
+
+1️⃣ **Fuente de Datos: Amazon S3** 🗄️  
+   - Se carga la información desde un **bucket de S3**.  
+   - Esto puede ser un conjunto de archivos **CSV, JSON u otro formato compatible**.  
+
+2️⃣ **Transformación: SQL Query** 🔄  
+   - Se aplica una transformación utilizando **SQL**.  
+   - Aquí se pueden **filtrar, modificar columnas o unir datasets**.  
+
+3️⃣ **Destino de Datos: Amazon S3** 📤  
+   - Los datos transformados se guardan en otro **bucket de S3**.  
+   - En este caso, se ha seleccionado el formato **CSV** y se ha definido una ubicación específica.  
+
+---
+
+## 🚀 **Cómo debería haber sido la ETL**  
+
+🔹 **El diseño visual permite realizar muchas operaciones de transformación**, pero tiene **limitaciones** cuando se requiere personalización avanzada.  
+
+🔹 En nuestro caso, el **modo visual es útil hasta cierto punto**, pero **necesitamos cambiar a código (PySpark)** para:  
+   - **Unir múltiples archivos en uno solo**.  
+   - **Aplicar transformaciones más flexibles** que no se pueden realizar con la interfaz visual.  
+   - **Definir bien el formato** en el almacenamiento del S3.  
+
+📌 **A continuación, explicaremos el código que reemplazará esta configuración para lograr la ETL completa en AWS Glue.** 🚀  
+
+<img src="Imagenes/ETL/imagen-2.png" width="600" height="300">  
+
+## 🚀 **Importaciones necesarias**  
+
+Este código **prepara el entorno** para ejecutar una tarea en **AWS Glue**, una herramienta que ayuda a procesar datos de manera eficiente en la nube ☁️📊.  
+
+### 🛠️ **¿Qué hace cada línea?**  
+
+1. **Importa librerías esenciales** 📦  
+   - `sys`: Permite interactuar con el sistema operativo y gestionar argumentos.  
+   - `awsglue.transforms`: Contiene funciones para transformar datos dentro de AWS Glue.  
+   - `awsglue.utils.getResolvedOptions`: Sirve para obtener parámetros que se pasan al script desde AWS Glue.  
+
+2. **Configura el entorno de ejecución en Spark** 🔥  
+   - `SparkContext`: Crea el contexto de Spark, que es el motor que procesará los datos en paralelo.  
+   - `GlueContext`: Un entorno especial de AWS Glue que facilita la integración con otros servicios de AWS.  
+   - `Job`: Permite definir una **tarea en AWS Glue**, facilitando su ejecución y seguimiento.  
+
+3. **Evalúa la calidad de los datos** ✅  
+   - `EvaluateDataQuality`: Un módulo de AWS Glue que **verifica si los datos son correctos** y cumplen con ciertos estándares antes de seguir procesándolos.  
+
+4. **Usa `DynamicFrame` en lugar de DataFrames tradicionales** 🔄  
+   - `DynamicFrame`: Una versión mejorada de los DataFrames de Spark, diseñada para trabajar con datos en AWS Glue.  
+   - Permite **manejar datos semiestructurados** y **hacer transformaciones fácilmente** sin necesidad de definir un esquema fijo.  
+
+---
+
+<img src="Imagenes/ETL/imagen-3.png" width="600" height="300">     
+
+## 🚀 **Función `sparkSqlQuery`**  
+
+Esta función permite **ejecutar consultas SQL en datos almacenados en AWS Glue**. Es útil para **transformar y analizar los datos** sin necesidad de escribir código complejo, solo utilizando SQL. 📊💡  
+
+### 🔎 **¿Cómo funciona?**  
+
+1. **Recibe los siguientes parámetros** 📥  
+   - 🏗️ `glueContext`: Proporciona acceso a AWS Glue y su integración con Spark.  
+   - 📜 `query`: La consulta SQL que se aplicará a los datos.  
+   - 🔄 `mapping`: Un diccionario donde **las claves son nombres de tablas temporales** y **los valores son `DynamicFrame` con los datos a procesar**.  
+   - 🔍 `transformation_ctx`: Identificador que permite rastrear la transformación dentro de Glue.  
+
+2. **Convierte los `DynamicFrame` en tablas temporales** 🔄  
+   - 📌 **Recorre cada elemento en `mapping`**, extrayendo el alias (nombre de la tabla) y los datos (`DynamicFrame`).  
+   - 🗂️ **Transforma cada `DynamicFrame` en un `DataFrame` de Spark** para poder consultarlo con SQL.  
+   - 🏷️ **Crea una tabla temporal** (`createOrReplaceTempView(alias)`) para que la consulta SQL pueda referirse a ella.  
+
+3. **Ejecuta la consulta SQL sobre los datos** ⚡  
+   - 📊 Utiliza `spark.sql(query)` para aplicar la transformación deseada.  
+
+4. **Convierte el resultado en un `DynamicFrame` nuevamente** 🔄  
+   - ✨ `DynamicFrame.fromDF(result, glueContext, transformation_ctx)`:  
+     - **Toma los datos procesados** y los **devuelve en formato `DynamicFrame`**.  
+     - Esto permite **seguir aplicando transformaciones** en AWS Glue sin problemas.  
+
+---
+
+<img src="Imagenes/ETL/imagen-4.png" width="600" height="300">  
+
+## 🚀 **Configuración del Entorno en AWS Glue**  
+
+Este fragmento de código **inicializa el entorno de ejecución en AWS Glue**, preparando Spark para procesar datos en la nube. 🌐⚡  
+
+### 🛠️ **¿Cómo funciona?**  
+
+1. **Obtiene los parámetros del trabajo en Glue** 📝  
+   - `args = getResolvedOptions(sys.argv, ['JOB_NAME'])`  
+   - 🔍 Extrae el nombre del trabajo desde los **argumentos que recibe el script** cuando se ejecuta en AWS Glue.  
+   - 🏷️ `JOB_NAME` es el identificador del trabajo dentro de AWS.  
+
+2. **Inicializa Spark** 🔥  
+   - `sc = SparkContext()`  
+   - 🏗️ Crea el **contexto de Spark**, necesario para ejecutar tareas de procesamiento de datos en paralelo.  
+
+3. **Crea el contexto de AWS Glue** 🛠️  
+   - `glueContext = GlueContext(sc)`  
+   - 🔄 Permite que AWS Glue utilice Spark para transformar y manejar datos de forma eficiente.  
+   - 📡 **Facilita la conexión con otras herramientas de AWS** como S3, Redshift o DynamoDB.  
+
+4. **Obtiene la sesión de Spark** 🚀  
+   - `spark = glueContext.spark_session`  
+   - 🖥️ **Crea una sesión de Spark**, que es necesaria para ejecutar consultas y manipular datos.  
+
+5. **Inicializa el trabajo en Glue** ✅  
+   - `job = Job(glueContext)`  
+   - 🏗️ Crea una **instancia de trabajo en AWS Glue**, permitiendo **controlar su ejecución y finalizarlo correctamente**.  
+   - `job.init(args['JOB_NAME'], args)`:  
+     - 🏷️ **Inicia el trabajo** con el nombre que se obtuvo en el primer paso.  
+     - 📋 **Permite que AWS Glue rastree y administre el estado del trabajo.**  
+
+---
+
+<img src="Imagenes/ETL/imagen-5.png" width="600" height="300">  
+
+## 📏 **Reglas por Defecto para la Calidad de Datos**  
+
+Este fragmento define un **conjunto de reglas básicas** que AWS Glue utilizará para **validar la calidad de los datos** antes de procesarlos. ✅📊  
+
+### 🛠️ **¿Cómo funciona?**  
+
+1. **Define un conjunto de reglas de calidad de datos** 📜  
+   - Se almacena en la variable `DEFAULT_DATA_QUALITY_RULESET`.  
+   - 🔍 Contiene un conjunto de reglas que AWS Glue **aplicará automáticamente** a todos los nodos de destino que tengan habilitada la validación de calidad de datos.  
+
+2. **Reglas establecidas** ⚖️  
+   - `ColumnCount > 0`  
+   - 📌 **Verifica que la tabla tenga al menos una columna**.  
+   - 🔄 **Evita procesar datos vacíos o estructuras incorrectas** que podrían causar errores más adelante.  
+
+---
+
+<img src="Imagenes/ETL/imagen-5.png" width="600" height="300">  
+
+## ☁️ **Carga de Datos desde Amazon S3**  
+
+Este fragmento de código **lee un archivo CSV almacenado en Amazon S3** y lo convierte en un `DynamicFrame` para su procesamiento en AWS Glue. 📂💡  
+
+### 🛠️ **¿Cómo funciona?**  
+
+1. **Configura la lectura de datos desde S3** 📥  
+   - `AmazonS3_node1740744770173 = glueContext.create_dynamic_frame.from_options(...)`  
+   - 🔄 **Convierte los datos en un `DynamicFrame`**, que es un formato optimizado para AWS Glue.  
+
+2. **Define las opciones de formato** 🗂️  
+   - `format_options={"quoteChar": "\"", "withHeader": True, "separator": ","}`  
+   - 🏷️ `quoteChar`: Usa `"` para manejar valores entre comillas.  
+   - 🏷️ `withHeader`: Indica que el CSV tiene una fila de encabezados.  
+   - 🏷️ `separator`: Especifica que las columnas están separadas por comas (`,`).  
+
+3. **Especifica la fuente de datos** 🌐  
+   - `connection_type="s3"`: Indica que los datos provienen de un **bucket de Amazon S3**.  
+   - `connection_options={"paths": ["s3://inervisionai"], "recurse": True}`  
+     - 📌 **Ruta del bucket**: `s3://inervisionai`.  
+     - 🔄 `recurse=True`: Permite leer archivos dentro de subcarpetas.  
+
+4. **Asigna un identificador al proceso de transformación** 🔍  
+   - `transformation_ctx="AmazonS3_node1740744770173"`  
+   - 🏗️ AWS Glue usa este identificador para rastrear y organizar las transformaciones aplicadas al `DynamicFrame`.  
+
+---
+
+## 🖥️ **Consulta SQL para Clasificación de Marcas**  
+
+Este fragmento de código SQL **clasifica los productos según su marca** 🏷️. La consulta revisa el nombre de cada producto y asigna una marca específica si detecta ciertas palabras clave.  
+
+### 🛠️ **¿Cómo funciona?**  
+
+1. **Selecciona todas las columnas del dataset** 📊  
+   - `SELECT *,`  
+   - 🔄 Mantiene todos los datos originales del conjunto de datos (`myDataSource`).  
+
+2. **Crea una nueva columna llamada `Marca`** 🏷️  
+   - `CASE WHEN lower(Nombre del Producto) LIKE '%logitech%' THEN 'Logitech'`  
+   - 🔍 **Convierte el nombre del producto a minúsculas** (`lower(Nombre del Producto)`) para evitar problemas con mayúsculas/minúsculas.  
+   - 🔎 Si el nombre del producto contiene `"logitech"`, asigna la marca `"Logitech"`.  
+   - 🏷️ Este mismo proceso se repite para otras marcas como **Razer, Corsair, Asus, MSI, Apple, etc.**  
+
+3. **Si el producto no coincide con ninguna marca conocida** ❓  
+   - `ELSE 'Otra'`  
+   - 🏷️ Si el producto **no pertenece a ninguna marca listada**, se le asigna la categoría `"Otra"`.  
+
+4. **Aplica la consulta sobre la fuente de datos** 💾  
+   - `FROM myDataSource;`  
+   - 📌 `myDataSource` es el nombre de la tabla o `DynamicFrame` que contiene los datos originales.  
+
+---
+
+<img src="Imagenes/ETL/imagen-7.png" width="600" height="300">  
+
+## 🚀 **Ejecución de Consulta SQL y Almacenamiento en Amazon S3**  
+
+Este fragmento de código **ejecuta una consulta SQL en los datos, transforma el resultado y lo guarda en un archivo CSV en Amazon S3**. 📊☁️  
+
+### 🛠️ **¿Cómo funciona?**  
+
+1. **Ejecuta la consulta SQL sobre los datos de Amazon S3** 🖥️  
+   - Se usa la función `sparkSqlQuery` para ejecutar la consulta SQL almacenada en `SqlQuery0`.  
+   - Los datos provienen de `AmazonS3_node1740744770173` y se asigna un alias (`myDataSource`) para facilitar la consulta.  
+   - El resultado de la consulta se guarda en `SQLQuery_node1740745043008`, que será utilizado en los siguientes pasos.  
+
+2. **Convierte el resultado en un `DataFrame` de Spark** 🔄  
+   - Se transforma el `DynamicFrame` resultante de la consulta en un `DataFrame` para poder manipular los datos con mayor facilidad.  
+
+3. **Verifica si hay datos antes de continuar** ❗  
+   - Antes de escribir en Amazon S3, se comprueba que el `DataFrame` no esté vacío.  
+   - Si no hay datos, se genera un error (`ValueError`) y el proceso se detiene para evitar archivos vacíos en S3.  
+
+4. **Reduce el número de particiones para generar un solo archivo CSV** 📂  
+   - Se reorganizan los datos en una única partición para que Spark genere un solo archivo CSV en lugar de múltiples fragmentos.  
+
+5. **Muestra el esquema y algunas filas para depuración** 🔍  
+   - Se imprime la estructura de las columnas del `DataFrame` para verificar su formato.  
+   - Se muestran las primeras cinco filas para comprobar que los datos se han procesado correctamente.  
+
+6. **Guarda el resultado en Amazon S3 en formato CSV** ☁️  
+   - Se escribe el `DataFrame` en Amazon S3 en formato CSV con sobrescritura activada, lo que significa que si el archivo ya existe, se reemplazará.  
+   - Se incluye la opción de encabezados para que el archivo CSV mantenga los nombres de las columnas.  
+
+7. **Confirma que el trabajo ha finalizado** ✅  
+   - Se ejecuta el comando `job.commit()`, lo que indica que el trabajo en AWS Glue ha finalizado correctamente.  
+
+---
+
 
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
 
 
-# FOto
+
 
 # 🖼️ **Almacenamiento de Imágenes en CSV**  
 
@@ -967,7 +1336,7 @@ Después de eliminar las imágenes no deseadas, el siguiente paso es **registrar
 
 ---
 
-# Foto 
+ <img src="Imagenes/Limpieza de datos/imagen-2.png" width="600" height="300">  
 
 # 📂 **Definición de Carpetas y Lista de Datos**  
 
@@ -992,7 +1361,8 @@ Antes de procesar las imágenes, es necesario **definir las carpetas de origen**
 
 ---
 
-# Foto
+<img src="Imagenes/Limpieza de datos/imagen-3.png" width="600" height="300">  
+
 
 # 🖼️ **Función `procesar_carpeta`**  
 
@@ -1032,7 +1402,7 @@ Esta función **recorre carpetas y subcarpetas**, buscando imágenes, **convirti
 
 ---
 
-# Foto 
+<img src="Imagenes/Limpieza de datos/imagen-4.png" width="600" height="300">  
 
 # 📄 **Conversión de Imágenes a CSV**  
 
@@ -1065,8 +1435,8 @@ Después de procesar todas las imágenes, este código **crea un DataFrame y lo 
    - Confirma que el archivo se ha guardado **sin errores y listo para su análisis**.  
 
 ---
-
-# Foto 
+ 
+<img src="Imagenes/Visualización_de_datos/imagen-1.png" width="600" height="300">
 
 # 📦 **Importación de Módulos para la Prueba y Visualización**  
 
@@ -1103,7 +1473,7 @@ Antes de verificar el correcto funcionamiento de los datos, necesitamos **import
 
 ---
 
-# Foto 
+<img src="Imagenes/Visualización_de_datos/imagen-2.png" width="600" height="300">
 
 # 📄 **Lectura y Extracción de Imágenes desde CSV**  
 
@@ -1130,7 +1500,9 @@ En este paso, **cargamos el archivo CSV y extraemos la primera imagen** almacena
 
 ---
 
-# Foto 
+
+<img src="Imagenes/Visualización_de_datos/imagen-3.png" width="600" height="300">
+
 
 # 🖼️ **Verificación, Decodificación y Visualización de la Imagen**  
 
@@ -1176,15 +1548,13 @@ Este código **verifica que la imagen en Base64 esté en el formato correcto, la
 
 ---
 
-# Foto 
+<img src="Imagenes/Visualización_de_datos/imagen-4.png" width="600" height="300"> 
 
 # 🖱️ **Verificación de Datos de Ratones**  
 
 Ahora que hemos extraído y almacenado los datos, **vamos a verificar su integridad** antes de proceder con la visualización en Power BI. 📊  
 
 ---
-
-# Foto
 
 ## 🛠️ **¿Cómo funciona esta prueba?**  
 
@@ -1196,22 +1566,520 @@ Ahora que hemos extraído y almacenado los datos, **vamos a verificar su integri
    - `print(df_datos.head())`  
    - Permite visualizar las primeras 5 filas del dataset para asegurarnos de que los datos están bien organizados.  
 
-3️⃣ **Verifica si hay valores nulos** ⚠️  
-   - `print(df_datos.isna())`  
-   - Devuelve un **DataFrame con valores `True` o `False`**, indicando si hay datos faltantes.  
-
-4️⃣ **Cuenta los valores nulos por columna** 🔢  
+3️⃣ **Cuenta los valores nulos por columna** 🔢  
    - `print(df_datos.isna().sum())`  
    - Muestra **cuántos valores nulos hay en cada columna**, ayudando a identificar posibles problemas en los datos.  
 
 ---
 
+## 📊 **Visualización de Datos en Power BI**  
+
+Una vez que hemos procesado y comprobado de que no tiene **null** en ninguna fila, el siguiente paso es **visualizarlos en Power BI** para analizarlos de manera más intuitiva. 📈✨  
+
+![image](/API_InnerVisionAI/Imagenes/Power%20Bi/2025-03-03%2008_56_15-Inervision.png)
+
+Para visualizar el Power Bi de manera interactiva aqui. **Nota** : Es importante tener cuenta de power BI para poder acceder. 
+
 ## 5. Preparación de los datos para los algoritmos de Machine Learning. Se deben tratar los datos (limpiando, escalando, separando y todo lo que sea necesario) de tal forma que queden listos para entrenar el modelo.
+### 5.1 Proceso de Fine-Tuning con YOLOv5
+
+El objetivo del fine-tuning es adaptar un modelo preentrenado de YOLOv5 (yolov5nu.pt) a nuestro dataset, mejorando su capacidad de detección en nuestro caso de uso específico.
+
+### 📂 5.1.1 Preparación del Dataset
+Para entrenar el modelo, primero preparamos los datos siguiendo los pasos detallados a continuación:
+
+1️⃣ Obtención del Dataset
+
+Realizamos scraping de imágenes, almacenándolas en un archivo CSV en formato base64.
+
+📌 Ejemplo de archivo:
+![image](https://github.com/user-attachments/assets/6803008a-0ca4-4ad6-830b-18efb486ba31)
+
+---
+
+2️⃣ Conversión de Imágenes
+
+Como las imágenes estaban almacenadas en formato base64, era necesario decodificarlas para poder usarlas en el entrenamiento.
+
+Utilizamos el siguiente script en Python para convertir las imágenes de base64 a `.jpg`:
+
+![image](https://github.com/user-attachments/assets/58af828c-a9dc-40a4-9005-2d6db3b7bb56)
+
+---
+
+3️⃣ Etiquetado de Imágenes
+
+Para entrenar un modelo de detección de objetos, cada imagen necesita etiquetas con las coordenadas de los objetos. Utilizamos **Roboflow**, una plataforma que permite:
+
+- ✅ Subir imágenes.
+- ✅ Etiquetar imágenes manualmente o automáticamente con herramientas de anotación.
+- ✅ Convertir el dataset a formatos compatibles con modelos de detección como YOLOv5.
+- ✅ Dividir los datos en conjuntos de entrenamiento, validación y prueba.
+
+Nuestro objetivo fue **etiquetar automáticamente** imágenes del dataset para detectar objetos de interés y exportarlas en formato YOLOv5.
+
+🔹 Creación de un Proyecto en Roboflow
+
+- Asignamos un nombre al proyecto, por ejemplo: cupboard_detection.
+- Seleccionamos el tipo de modelo: Object Detection (YOLOv5, COCO, etc.)
+
+![image](https://github.com/user-attachments/assets/6ad1ed78-265d-44b6-8ecb-ff13b256031b)
+  
+
+🔹 Subida de Imágenes al Proyecto
+
+![image](https://github.com/user-attachments/assets/5c00338e-e366-49b7-b870-caab13064313)
+
+🔹 Etiquetado Automático de Objetos
+
+Dado que Roboflow cuenta con herramientas de etiquetado automático, utilizamos esta opción para generar anotaciones sin intervención manual.
+
+![image](https://github.com/user-attachments/assets/65260858-f3dd-4f6e-b690-78e095ef2e20)
+
+Si bien el etiquetado automático es preciso, verificamos que las anotaciones fueran correctas.
+
+![image](https://github.com/user-attachments/assets/b50e683b-e12b-4f62-906e-a672ed6310d8)
+
+En caso de errores, ajustamos manualmente las etiquetas antes de continuar para completar el proceso.
+
+![image](https://github.com/user-attachments/assets/ebea7738-f6de-4def-853f-dd361ac78e29)
+
+Después de la comprobación añadimos las etiquetas aprobadas.
+
+![image](https://github.com/user-attachments/assets/faf2c310-4d9d-47ba-8a08-9e818f91ae73)
+
+
+
+🔹 Exportación del Dataset en Formato YOLOv5
+
+Para utilizar las imágenes etiquetadas en el entrenamiento del modelo, exportamos el dataset en formato YOLOv5.
+
+Roboflow nos permite dividir el dataset en tres subconjuntos:
+- 80% para entrenamiento (train)
+- 10% para validación (valid)
+- 10% para prueba (test)
+
+![image](https://github.com/user-attachments/assets/9a021657-f59a-4b1c-bac5-f258790e0bf2)
+
+En la sección de exportación, seleccionamos YOLOv5 como formato de salida y descargamos un archivo ZIP.
+
+![image](https://github.com/user-attachments/assets/a4fd3ee4-1efb-4581-8b08-c9d18a9aefb9)
+
+El archivo ZIP tiene la siguiente estructura:
+
+```
+/dataset
+│── test/    # 10% de imágenes para prueba
+│   ├── images/
+│   ├── labels/   
+│
+│── train/   # 80% de imágenes para entrenamiento
+│   ├── images/
+│   ├── labels/
+|
+│── valid/   # 10% de imágenes para validación
+│   ├── images/
+│   ├── labels/
+│
+│── data.yaml    # Archivo de configuración del dataset
+```
+
+En el directorio `labels` obtenemos archivos .txt con las coordenadas de los objetos.
+
+
+### 🛠 5.1.2 Entrenamiento del Modelo
+
+Para el entrenamiento utilizamos el modelo preentrenado **yolov5nu.pt**. Ejecutamos el proceso en Google Colab con GPU habilitada para acelerar el cómputo. Clonamos el repositorio de YOLOv5. Usamos los siguientes parámetros en el script de entrenamiento:
+
+```python
+!python train.py \
+  --weights /content/drive/MyDrive/Models/yolov5nu.pt \
+  --data /content/drive/MyDrive/YOLO_Dataset/data.yaml \
+  --epochs 50 \
+  --batch-size 16 \
+  --imgsz 640 \
+  --optimizer SGD \
+  --device 0
+```
+
+Sin embargo, durante la ejecución del entrenamiento encontramos errores relacionados con la configuración de los anchors en el modelo. El siguiente es un ejemplo de los errores que recibimos:
+
+```
+RuntimeError: shape '[3, -1, 2]' is invalid for input of size 3
+```
+
+Este error sugiere que los anchors definidos en el modelo no se ajustaban correctamente al número de clases u otras dimensiones esperadas. Intentamos modificar la configuración, pero el problema persistió.
+
+---
+
+⚠️ Problemas Encontrados y Conclusión
+
+No logramos completar el fine-tuning debido a erroresencontrados. Las posibles causas incluyen:
+
+1. **Incompatibilidad en los anchors**: La configuración de los anchors puede no haber sido adecuada para nuestro dataset. 
+2. **Formato incorrecto en el archivo data.yaml**: Es posible que las clases o los parámetros en el archivo no estuvieran correctamente definidos.
+3. **Modelo preentrenado incompatible**: Puede que el modelo **yolov5nu.pt** no estuviera configurado correctamente para ser reutilizado con nuevos datos.
+
+Para solucionar estos problemas, proponemos:
+- Revisar el formato de **data.yaml** y asegurarnos de que está bien definido.
+- Ajustar los anchors manualmente o permitir que YOLO los recalibre automáticamente.
+- Probar con otro modelo preentrenado de YOLOv5 para verificar compatibilidad.
+
+A pesar de las dificultades, este proceso nos permitió comprender mejor el flujo de trabajo de YOLOv5 y los retos asociados a la personalización de modelos de detección de objetos. Con algunos ajustes, creemos que podemos completar con éxito el fine-tuning en futuras iteraciones.
+
 
 ## 6. Entrenamiento del modelo y comprobación del rendimiento. Se entrenarán uno o varios modelos, comprobando en cada caso el rendimiento que ofrecen mediante las apropiadas medidas de error y/o acierto.
 
+### 6.1 Uso de YOLOv5 de Ultralytics y Chatbot personalizado
+
+En este apartado, se describe el proceso de implementación de YOLOv5 de Ultralytics, desde la configuración del entorno hasta la integración con una API en Flask y un frontend en React. El objetivo es demostrar cómo este modelo puede ser utilizado para detectar objetos en tiempo real, enviando los resultados de las detecciones a una interfaz gráfica que permite visualizar las predicciones de manera intuitiva. 
+Además, se aborda la importancia de optimizar el flujo de trabajo para garantizar un rendimiento óptimo, especialmente como tratar el funcionamiento con recursos gratuitos y el limite que establece Netlify y nuestra API con Flask en local.
+
+También ideamos un chatbot con una API-KEY de OpenAI, donde con base en nuestro README.md, procese y responda preguntas y cuestiones sobre nuestro proyecto debido a, que nuestro readme va a ser bastante extenso.
+
+Primero explicaremos el funcionamiento de YOLOv5 con Ultralytics.
+
+#### Uso de la API con Flask
+
+La API desarrollada con Flask sirve como el núcleo del proyecto, facilitando la comunicación entre el modelo de detección de objetos YOLOv5 y el chatbot basado en OpenAI. Esta API maneja tanto el procesamiento de imágenes en tiempo real mediante WebSockets como la interacción con el chatbot mediante solicitudes REST.
+
+#### Configuración del Entorno
+
+Antes de ejecutar la API, es necesario asegurarse de que se tienen instaladas todas las dependencias necesarias. Se pueden instalar mediante:
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+(Aconsejable hacer un environment si necesitas versiones específica)
+
+Como la versión de Python que usamos era la 3.10, con ejecutar el comando de arriba, te instalará siempre lo último de esta versión en concreto de python.
+
+#### Uso de WebSocket para Detección de Objetos con YOLOv5
+
+La API emplea flask_socketio para recibir imágenes desde el frontend en tiempo real, procesarlas con YOLOv5 y devolver las detecciones correspondientes.
+
+#### Flujo de Trabajo
+
+- El frontend envía frames codificados en base64 mediante WebSocket.
+
+- La API recibe y decodifica la imagen, luego la redimensiona para mejorar la eficiencia.
+
+- YOLOv5 procesa la imagen y genera predicciones sobre los objetos detectados.
+
+- La API envía las detecciones de vuelta al frontend a través de WebSocket.
+
+![api_websocket](https://github.com/user-attachments/assets/0be421ff-2753-4eea-8bb0-560b6aa6c703)
+
+Aunque la anterior imagen representa la función y puede ser engorrosa, la siguiente captura será la zona importante y vital de entender.
+Esta parte es la más importante ya que sin ella, no podríamos representar en el frontend mediante el uso de canvas, pintar los rectángulos de la detección de objetos ya que nos da:
+- Las posiciones de cada objeto
+- Redonde el score del objeto a 2 decimales
+- Gracias a la id, accedemos al nombre de la clase, por ejemplo, 0 - Persona
+- Añadimos esto a una lista finalmente
+  
+![api_socket2](https://github.com/user-attachments/assets/fe737556-a178-4f62-af07-5f0f63d33886)
+
+#### Uso de API REST para el Chatbot Personalizado
+
+Para permitir que los usuarios interactúen con el chatbot, la API implementa un endpoint /chat que recibe preguntas del usuario y responde basándose en el contenido del README.md del proyecto.
+
+#### Flujo de Trabajo
+
+- El usuario envía una solicitud POST a /chat con el mensaje en formato JSON.
+
+- La API obtiene el contenido del README.md desde GitHub.
+
+- Se construye un mensaje para OpenAI combinando la pregunta del usuario y la información del README.md.
+
+- La API envía la solicitud a OpenAI y devuelve la respuesta generada.
+
+La parte del frontend será expuesta en la sección **8. Desarrollo de la Aplicación Web**
+
+![api_rest](https://github.com/user-attachments/assets/1045acd4-a22b-44f2-ae54-376e16ca642e)
+
+Vemos aquí mas directamente la parte importante, que usará el rol de system, con lo cual nos permite generar un prompt anterior al promt del usuario, donde gracias a esta función, transformamos el readme...
+![readme](https://github.com/user-attachments/assets/fc3a12d0-7bfc-4919-8424-545b98158e73)
+
+Para conseguir así finalmente que "sesgemos" al modelo para que responda preguntas con base en nuestro Readme.
+![api_chat2](https://github.com/user-attachments/assets/b0b03eec-27d0-43eb-b092-d6e35d641c51)
+
+Las demás lineas de código son necesarias para permisos y utilidad como:
+
+**CORS**
+![cors1](https://github.com/user-attachments/assets/8f0fc1bd-7060-4089-80d7-5c7b572813e0)
+![cors2](https://github.com/user-attachments/assets/cd79b6b5-5ae4-402f-9195-57947fed27bf)
+
+**Optimización YOLO**
+![yolo1](https://github.com/user-attachments/assets/15184317-f9f6-4be5-ab08-e465cf3b873e)
+
+---
+
 ## 7. Se tiene que incluir alguna de las técnicas estudiadas en el tema de Procesamiento de Lenguaje Natural: expresiones regulares, tokenización, generación de texto, análisis de sentimientos, etc.
 
-## 8. Se debe realizar también una aplicación web que haga uso del modelo entrenado.
+En el proyecto hemos integrado diversas técnicas de **Procesamiento de Lenguaje Natural (PLN)** para mejorar la interacción con el usuario y optimizar el análisis de texto.
+
+### 7.1. Uso de Expresiones Regulares en el Formateo de Respuestas del Chatbot
+
+En la página de `Chatbot.tsx` hemos desarrollado una función llamada `formatResponse()`, cuya finalidad es mejorar la legibilidad de los mensajes del chatbot al usuario. Para ello, aplicamos **expresiones regulares** que permiten transformar ciertos patrones de texto en formato HTML.
+
+📌 Código de la función:
+![image](https://github.com/user-attachments/assets/3077c79d-38dd-4a5d-8cc7-6e688da97c0c)
+
+Desglose del código:
+
+1️⃣ `replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')`:
+
+- Busca cualquier texto encerrado entre `**` y lo reemplaza por `<strong>`, convirtiéndolo en negrita.
+- Ejemplo: `"Este es un **mensaje importante**"` → `"Este es un <strong>mensaje importante</strong>"`.
+
+2️⃣ `replace(/\n/g, '<br>')`:
+
+- Reemplaza los saltos de línea (`\n`) por etiquetas HTML `<br>`, asegurando que el texto respete los espacios entre líneas.
+- Ejemplo: `"Línea 1\nLínea 2"` → `"Línea 1<br>Línea 2"`.
+
+3️⃣ `replace(/\d+\. /g, '<br>• ')`:
+
+- Busca listas numeradas (`1. Texto`, `2. Texto`, etc.) y las convierte en listas con viñetas (`• Texto`).
+- Ejemplo:
+  
+```plaintext
+1. Manzana
+2. Pera
+```
+Se transformará en:
+```html
+Copiar
+Editar
+<br>• Manzana
+<br>• Pera
+```
+
+## 8. Desarrollo de la Aplicación Web
+
+Nuestra aplicación web ha sido desarrollada utilizando **React** e **Ionic** con **TypeScript**, proporcionando una experiencia moderna y responsiva. A continuación, describimos los principales componentes de la web junto con capturas del código y la interfaz.
+
+### 8.1 Estructura del Proyecto
+
+El proyecto se organiza en distintos componentes de React y páginas específicas para cada funcionalidad. Nuestra estructura principal incluye:
+- **Home.tsx** (Página de inicio)
+- **Model.tsx** (Módulo de detección de objetos)
+- **AboutUs.tsx** (Información del equipo)
+- **Chatbot.tsx** (Asistente virtual basado en IA)
+
+Con esta organización permitimos una estructura modular y escalable. 🚀
+
+### 8.2 Inicio (Home.tsx)
+
+Nuestra página principal (**Home.tsx**) presenta el proyecto y enlaza a su repositorio en GitHub. Hemos utilizado iconos para mejorar la accesibilidad visual.
+
+#### ¿Qué hace este archivo?
+- Muestra el diseño principal: Incluimos el encabezado, el contenido y cualquier elemento visual que queramos resaltar.
+- Carga datos si es necesario: Dependiendo de lo que queremos mostrar, aquí podemos traer información desde una API o una base de datos.
+- Facilita la navegación: Agregamos enlaces o botones para que los usuarios puedan moverse dentro de nuestra aplicación.
+  
+---
+
+#### 8.2.1 Importación de librerías y estilos
+El archivo `Home.tsx` es un componente de React que utiliza Ionic y otros elementos para la estructura y diseño de la pantalla principal de la aplicación.
+
+📌 Código de importación:
+![image](https://github.com/user-attachments/assets/b3ce7a56-9c89-4614-93ee-706c37b11121)
+
+---
+
+#### 8.2.2 Contenido de la página
+En la sección principal de la pantalla, mostramos el título del proyecto junto con una breve descripción para que los usuarios comprendan su propósito de inmediato. Además, proporcionamos enlaces directos a los repositorios de GitHub, tanto para la web como para la API, con iconos interactivos que facilitan el acceso.
+
+📌 Código del contenido:
+![image](https://github.com/user-attachments/assets/1d891c5d-278b-42b3-8b11-5adc13391e66)
+
+---
+
+#### 8.2.3 Estilos Aplicados
+En `Home.css`, definimos estilos para mejorar la apariencia del componente. 
+
+📌 Ejemplo de diseño:
+
+![image](https://github.com/user-attachments/assets/2b9051a9-4ea8-4f39-bdbf-de611e44f181)
+
+Con estos estilos nos aseguramos que la página tenga un diseño centrado y estético.
+
+
+✨ **Vista de la página de inicio:**  
+
+![image](https://github.com/user-attachments/assets/a850f36f-605a-406a-a75b-50b4e671ce34)
+
+
+Esta página brinda una bienvenida clara y acceso directo a la información clave del proyecto. 🚀
+
+## 8.3 Modelo de Detección de Objetos (Model.tsx)
+
+En esta página implementamos la detección de objetos en tiempo real utilizando la cámara del dispositivo. Para ello, hacemos uso de WebSockets para enviar frames al backend y recibir las detecciones procesadas.
+
+#### ¿Qué hace este archivo?
+- Captura video en tiempo real desde la cámara del dispositivo. El código a continuación solicita permisos para acceder a la cámara del dispositivo y captura el video en tiempo real:
+  
+  ![image](https://github.com/user-attachments/assets/9d704801-afd2-4f15-8cb7-8563a47fdeb5)
+
+- Envía frames al backend. Usa WebSockets para enviar imágenes a la API, donde se realiza la detección de objetos.
+
+  ![image](https://github.com/user-attachments/assets/3045fff8-ff73-4c49-b901-24192edad290)
+
+  
+- Recibe y dibuja detecciones. Recibe los resultados del backend y los dibuja sobre el video en un canvas.
+
+  ![image](https://github.com/user-attachments/assets/aa6c6931-02fe-444d-83f4-0db89417b673)
+
+---
+
+#### 8.3.1 Importación de librerías y estilos
+El archivo Model.tsx importa las siguientes librerías:
+
+- react, useEffect, useRef: Para gestionar el ciclo de vida del componente y referencias.
+- socket.io-client: Para la comunicación en tiempo real con el backend.
+- @ionic/react: Para la estructura de la página en Ionic.
+- @capacitor/core y @capacitor/status-bar: Para ajustar la interfaz en dispositivos móviles.
+
+📌 Código de importación:
+![image](https://github.com/user-attachments/assets/44c13030-c11c-450b-8eff-bf19317438da)
+
+---
+
+#### 8.3.2 Contenido de la página
+Esta sección estructura la interfaz del módulo:
+
+- Video en vivo: Capturamos la imagen de la cámara.
+- Canvas de detecciones: Dibujamos los resultados del modelo de IA sobre el video.
+
+📌 Código del contenido:
+![image](https://github.com/user-attachments/assets/a9428b16-d8ba-474a-9211-cdd2a1f4d686)
+
+---
+
+#### 8.3.3 Comunicación con el Backend
+
+Conexión al Backend (A nivel local)
+![image](https://github.com/user-attachments/assets/9f55390b-f505-409d-a544-9972425c4e85)
+
+Aquí se establece la conexión con el backend en el puerto 5000.
+
+Cuando el backend detecta objetos en el frame enviado, devuelve las coordenadas y la confianza del modelo. Este código se encarga de dibujar los resultados sobre el video:
+
+![image](https://github.com/user-attachments/assets/61bd5e5d-8bb5-4451-8c40-a219badb81d9)
+
+Desconecta el socket cuando el usuario sale de la página:
+
+![image](https://github.com/user-attachments/assets/c6493fce-0297-4b97-a311-39f34df48f0a)
+
+---
+
+#### 8.3.4 Estilos Aplicados
+En Model.css, definimos estilos para:
+
+Centrar el video en pantalla.
+Ajustar el tamaño del video y el canvas.
+Aplicar un fondo con degradado.
+
+📌 Ejemplo de diseño:
+![image](https://github.com/user-attachments/assets/c44fcc65-8273-48ec-b1da-ffd645ccf3e7)
+
+
+✨ **Vista del modelo de detección de objetos:**
+
+[Imagen del modelo funcionando]
+
+Con esta implementación logramos un procesamiento ágil y preciso, permitiendo a los usuarios identificar objetos en tiempo real de manera intuitiva y eficaz. 🎯
+
+## 8.4 Información del Equipo (AboutUs.tsx)
+
+En esta página mostramos a los integrantes del equipo de desarrollo. En la página se puede visualizar una lista de miembros, su rol, su formación y enlaces a sus perfiles de GitHub y LinkedIn.
+
+✨ **Vista de la página de Información del Equipo:**
+
+![image](https://github.com/user-attachments/assets/e2236a86-5f5f-44dc-82c4-b8aa7872afaa)
+
+
+## 8.5 Chatbot (Chatbot.tsx)
+
+En esta página implementamos un chatbot interactivo que permite a los usuarios realizar preguntas. Utilizamos un backend en Node.js para procesar las consultas y devolver respuestas dinámicas.
+
+### ¿Qué hace este archivo?
+- **Muestra un chatbot en la aplicación.**
+- **Permite la interacción con el usuario.** El usuario puede escribir preguntas y recibir respuestas en tiempo real.
+- **Envía consultas a un backend en Node.js.** Se conecta a un servidor en `http://localhost:5000/chat` para procesar los mensajes.
+- **Formatea las respuestas.** Convierte ciertos elementos de texto como negritas y listas en formato HTML para mejorar la legibilidad.
+
+---
+
+### 8.5.1 Importación de librerías y estilos
+El archivo `Chatbot.tsx` importa las siguientes librerías:
+
+- **react, useState**: Para gestionar el estado del chatbot y los mensajes.
+- **axios**: Para enviar solicitudes HTTP al backend.
+- **@ionic/react**: Para la estructura de la página.
+- **Footer**: Componente reutilizable para el pie de página.
+- **Chatbot.css**: Archivo de estilos para la apariencia del chatbot.
+
+📌 **Código de importación:**
+![image](https://github.com/user-attachments/assets/8822090b-325f-4af6-aa1f-72307de3ce1f)
+
+
+### 8.5.2 Estado y manejo de mensajes
+Almacenamos los mensajes en un array gestionado con `useState`. Inicialmente, contiene un mensaje de bienvenida del bot:
+
+📌 **Código de inicialización:**
+![image](https://github.com/user-attachments/assets/bf0786c2-d521-4084-a8a0-e469a4a0aa52)
+![image](https://github.com/user-attachments/assets/59699bd8-f7bf-437c-bffb-d92c8e92b76d)
+
+
+El usuario puede escribir un mensaje y enviarlo con `sendMessage()`, que realiza las siguientes acciones:
+1. Agrega el mensaje del usuario al estado.
+2. Envía la consulta al backend mediante una petición `POST`.
+3. Recibe la respuesta del servidor y la formatea.
+4. Agrega la respuesta del chatbot a la conversación.
+5. Limpia el input después de enviar el mensaje.
+
+📌 **Código de envío de mensajes:**
+![image](https://github.com/user-attachments/assets/f6eabbe7-1417-42dd-88b0-25fa0b26bf11)
+
+
+---
+
+### 8.5.3 Renderizado del Chatbot
+
+El chatbot se compone de:
+- Un **contenedor de mensajes**, donde se muestran las interacciones previas.
+- Un **input de texto** para que el usuario escriba su mensaje.
+- Un **botón de envío** para enviar mensajes manualmente.
+- La posibilidad de presionar **Enter** para enviar el mensaje.
+
+📌 **Código del renderizado:**
+![image](https://github.com/user-attachments/assets/ef0402ba-5a17-42e8-8ef4-591904aab9c8)
+
+
+---
+
+### 8.5.4 Formateo de respuestas
+
+Para mejorar la presentación de las respuestas, convertimos ciertos elementos a formato HTML:
+- **Negritas**: `**texto**` → `<strong>texto</strong>`
+- **Saltos de línea**: `\n` → `<br>`
+- **Listas numeradas**: `1. Texto` → `• Texto`
+
+📌 **Código de formateo:**
+![image](https://github.com/user-attachments/assets/ac19de25-1edd-4c50-b5e9-ac02fcf076a0)
+
+
+
+---
+
+✨ **Vista del chatbot funcionando:**
+
+![chatbot](https://github.com/user-attachments/assets/915472c2-ab6a-485f-ac20-7fb3b2ff22d0)
+
+Con esta implementación ofrecemos una experiencia fluida y responsiva, permitiendo a los usuarios interactuar con el asistente virtual de manera sencilla y eficiente. 🚀
+
 
 ## 9. Conclusiones. Se expondrán las conclusiones que se han obtenido en la realización del TFM.

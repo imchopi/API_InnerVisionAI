@@ -130,7 +130,7 @@ Voy a explicar **cada parte** para que sea fácil de entender y seguir 📌.
 
 ---
 
-<img src="Imagenes/IKEA/Imagen-2.png" width="700" height="400">
+<img src="Imagenes/IKEA/Imagen-2.png" width="1200" height="400">
 
 ## Clase IKEA Scraper
 
@@ -163,7 +163,7 @@ Como la web tiene **botones interactivos**, usamos **Selenium** para controlarla
 
 ---
 
-<img src="Imagenes/IKEA/Imagen-3.png" width="600" height="300">
+<img src="Imagenes/IKEA/Imagen-3.png" width="800" height="300">
 
 ## Función `create_directories`
 
@@ -212,7 +212,7 @@ Esta función **descarga una imagen desde una URL y la guarda en el sistema** �
 
 ---
 
-<img src="Imagenes/IKEA/Imagen-5.png" width="600" height="300"> 
+<img src="Imagenes/IKEA/Imagen-5.png" width="1200" height="400"> 
 
 ## Función `load_all_products`
 
@@ -393,7 +393,7 @@ Dado que la web de **PCComponentes** requiere **interacción con la paginación*
 
 ---
 
-<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-2.png" width="600" height="300">  
+<img src="Imagenes/PCCOMPONENTES/Ratones/imagen-2.png" width="1600" height="400">  
 
 ## Clase `PCscrapper`
 
@@ -608,7 +608,7 @@ Este bloque de código **importa todas las librerías necesarias** para el funci
 
 ---
 
-<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-2.png" width="600" height="300">  
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-2.png" width="1600" height="400">  
 
 ##  **Clase `PCScraper`**
 
@@ -632,7 +632,7 @@ Esta clase define el **scraper** encargado de extraer información de ratones en
 
 ---
 
-<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-3.png" width="600" height="300">  
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-3.png" width="1600" height="400">  
 
 ## **Función `start_driver`**
 
@@ -854,8 +854,7 @@ Esta última parte de la función **guarda los datos extraídos en una lista y m
 
 ---
 
-
-<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-8.png" width="600" height="300">  
+<img src="Imagenes/PCCOMPONENTES/Ratones-datos/imagen-8.png" width="1200" height="400">  
 
 ### 📂 **Función `scrape_all_categories`**  
 
@@ -993,7 +992,7 @@ El proceso de limpieza de datos en este proyecto es **sencillo pero esencial** p
 
 ---
 
-<img src="Imagenes/PCCOMPONENTES/Limpieza de datos/imagen-1.png" width="600" height="300">  
+<img src="Imagenes/PCCOMPONENTES/Limpieza de datos/imagen-1.png" width="800" height="400">  
 
 
 # 🗑️ **Eliminación de Imágenes No Deseadas**  
@@ -1076,7 +1075,7 @@ AWS Glue es un servicio **serverless** que permite **automatizar procesos ETL** 
 ---
 
 
-<img src="Imagenes/ETL/imagen-1.png" width="600" height="300">  
+<img src="Imagenes/ETL/imagen-1.png" width="1600" height="800">  
 
 # 🛠️ **Diseño de la ETL en AWS Glue (Modo Visual)**  
 
@@ -1277,7 +1276,7 @@ Este fragmento de código SQL **clasifica los productos según su marca** 🏷�
 
 ---
 
-<img src="Imagenes/ETL/imagen-7.png" width="600" height="300">  
+<img src="Imagenes/ETL/imagen-7.png" width="1400" height="450">  
 
 ## 🚀 **Ejecución de Consulta SQL y Almacenamiento en Amazon S3**  
 
@@ -1317,7 +1316,7 @@ Este fragmento de código **ejecuta una consulta SQL en los datos, transforma el
 ## 4. Exploración y visualización de los datos. Se realizará un estudio de los datos buscando correlaciones, mostrando gráficas de diferente tipología, observando si hay valores nulos, etc.
 
 
-# 🖼️ **Almacenamiento de Imágenes en CSV**  
+# **Almacenamiento de Imágenes en CSV**  
 
 Después de eliminar las imágenes no deseadas, el siguiente paso es **registrarlas en un archivo CSV**. 📂🔄  
 
@@ -1353,10 +1352,9 @@ Antes de procesar las imágenes, es necesario **definir las carpetas de origen**
 
 ---
 
-<img src="Imagenes/Limpieza de datos/imagen-3.png" width="600" height="300">  
+<img src="Imagenes/Limpieza de datos/imagen-3.png" width="1200" height="400">  
 
-
-# 🖼️ **Función `procesar_carpeta`**  
+# **Función `procesar_carpeta`**  
 
 Esta función **recorre carpetas y subcarpetas**, buscando imágenes, **convirtiéndolas a Base64** y almacenándolas en una lista con formato HTML. 📂📊  
 
@@ -1539,7 +1537,7 @@ Este código **verifica que la imagen en Base64 esté en el formato correcto, la
 
 ---
 
-<img src="Imagenes/Visualización_de_datos/imagen-4.png" width="600" height="300"> 
+<img src="Imagenes/Visualización_de_datos/imagen-4.png" width="1200" height="600"> 
 
 # 🖱️ **Verificación de Datos de Ratones**  
 

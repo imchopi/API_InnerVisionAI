@@ -59,7 +59,8 @@ Próximamente...
 
 ### **Vídeo**
 
-Próximamente...
+[VIDEO](https://drive.google.com/file/d/1wJosbON_d42RYheS3YLzwbOHQrZMqdRH/view?usp=sharing)
+
 
 ### **Porcentaje que le corresponde a cada miembro del trabajo realizado de dicho proyecto.**
 
